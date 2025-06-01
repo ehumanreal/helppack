@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomocnik hackermana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="sidebar">
+    <h1>Internetowy Pomocnik</h1>
+    <input type="text" id="searchInput" placeholder="Szukaj tematu...">
+
+    <ul id="topicList">
+      <li><a href="grub.html">Przywracanie Gruba</a></li>
+    </ul>
+  </div>
+
+  <div class="proposal-box">
+    <h2>Zaproponuj nowy temat</h2>
+    <form id="proposalForm">
+      <input type="text" id="newTopic" placeholder="Wpisz temat..." required />
+      <button type="submit">Wyślij</button>
+    </form>
+    <p id="confirmationMessage" style="display:none; color: green; margin-top: 10px;">
+      Dziękujemy za propozycję!
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
