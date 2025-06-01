@@ -14,20 +14,18 @@
   <h1>Przywracanie Gruba</h1>
   <p>W terminalu wklepujemy: <code class="inline-code">sudo nano /etc/default/grub</code></p>
   <p>Następnie edytujemy wybrane linijki tak, aby było jak poniżej. Jeśli którejś nie ma, dodajemy ją.</p>
-<div style="
-  background: #dddddd;
-  padding: 10px 15px;
-  border-left: 4px solid #007BFF;
-  border-radius: 6px;
-  font-family: monospace;
-  white-space: pre-wrap;
-  max-width: 200px;
-  margin-top: 20px;
-">GRUB_TIMEOUT=10
+<div class="code-box">GRUB_TIMEOUT=10
 GRUB_TIMEOUT_STYLE=menu
 GRUB_HIDDEN_TIMEOUT=0
 </div>
 <p>Następnie zapisz oraz wyjdź a potem wklep w termianal: <code class="inline-code">sudo update-grub</code></p>
-  <p><a href="https://ehumanreal.github.io/helppack/">← Powrót do listy tematów</a></p>
+  <p><h2><a href="https://ehumanreal.github.io/helppack/">← Powrót do listy tematów</a></h2></p>
+
+  <script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
 </body>
 </html>
