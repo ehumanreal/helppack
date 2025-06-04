@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pomocnik hackermana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <p><h2><a href="windows_tools.html">← Powrót do listy narzędzi</a></h2></p>
+    <p>Włączasz Windows PowerShell z uprawnieniami admina</p>
+    <p>Teraz wklepujemy: <code class="inline-code">irm "https://christitus.com/win" | iex</code></p>
+    <p>Enter i chwilę czekamy na załadowanie</p>
+    <p>Po załadowaniu wchodzisz w zakładkę Tweaks i zaznaczasz jeden z szablonów</p>
+    <p>Możesz również wybrać ręcznie co chcesz optymalizować</p>
+    <p>Na koniec klikasz<code class="inline-code">run tweaks</code> i czekasz na zakończenie</p>
+
+<script>
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+</script>
+
+</html>
