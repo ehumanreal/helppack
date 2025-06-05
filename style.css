@@ -148,7 +148,7 @@ body.dark-mode .proposal-box button:hover {
   background: #dddddd;
   color: #000;
   padding: 10px 15px;
-  border-left: 4px solid #007BFF;
+  border-left: 4px solid #09ff00;
   border-radius: 6px;
   font-family: monospace;
   white-space: pre-wrap;
@@ -160,5 +160,5 @@ body.dark-mode .proposal-box button:hover {
 body.dark-mode .code-box {
   background: #1e1e1e;
   color: #f0f0f0;
-  border-left-color: #3399ff;
+  border-left-color: #09ff00;
 }
