@@ -10,7 +10,7 @@
     <p><h2><a href="https://ehumanreal.github.io/helppack/">← Powrót do listy tematów</a></h2></p>
    <p>Zależnie od wersji:</p>
    <p>/etc/netplan/50-cloud-init.yaml</p>
-   <div class="code-box">network:
+   <pre class="code-box"><code>network:
    ethernets:
        enp2s5:
         dhcp4: false
@@ -19,12 +19,31 @@
           - 172.20.0.3/24
         nameservers:
           addresses:
-          - 172.20.0.1
+            - 172.20.0.1
         routes:
           - to: 0.0.0.0/0
             via: 172.20.0.1
    version: 2
-</div>
+</code></pre>
+
+<p>-----------------------------------------------</p>
+
+<p>/etc/netplan/00-installer-config.yaml</p>
+   <pre class="code-box"><code>network:
+   ethernets:
+     enp0s25:
+       dhcp4: false
+       enp1s0:
+         addresses:
+         - 10.10.10.2/24
+        nameservers:
+          addresses:
+          - 10.10.10.1
+          search: []
+        enp2s5:
+         dhcp4: true
+   version: 2
+</code></pre>
 
 </body>
 <script>
