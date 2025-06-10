@@ -1,0 +1,11 @@
+ZAPISZ JAKO index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link do pliku</title>
+</head>
+<body>
+  <a href="test.txt">Pobierz plik test.txt</a>
+</body>
+</html>
