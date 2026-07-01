@@ -10,7 +10,7 @@ Dostępny online: [ehumanreal.github.io/0203](https://ehumanreal.github.io/0203/
 /
 ├── index.html          # Strona główna (INF.02 + INF.03)
 ├── style.css           # Motyw z CSS variables (jasny/ciemny)
-├── script.js           # Wyszukiwarka, dark mode, Discord webhook
+├── script.js           # Wyszukiwarka, dark mode
 ├── subpages/           # Poradniki INF.02
 │   ├── files.html      #   Instalki (programy + narzędzia)
 │   ├── grub.html       #   Przywracanie GRUB
@@ -30,7 +30,7 @@ Dostępny online: [ehumanreal.github.io/0203](https://ehumanreal.github.io/0203/
 
 *   **Dark Mode** – przełącznik z zapisem preferencji w `localStorage`
 *   **Wyszukiwarka** – filtrowanie list w czasie rzeczywistym
-*   **Zgłaszanie tematów** – formularz wysyłający propozycje przez Discord Webhook
+*   **Zgłaszanie tematów** – formularz wysyłający propozycje
 *   **Responsywność** – układ skalowany na komputerach i telefonach (Flexbox + media queries)
 *   **Minimalistyczny design** – systemowa czcionka, CSS Custom Properties, płynne przejścia
 
