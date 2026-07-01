@@ -1,10 +1,10 @@
 :root {
-  --bg: #f4f5f7;
+  --bg: #f0f1f3;
   --surface: #ffffff;
-  --surface-hover: #eef0f4;
-  --text: #1a1a2e;
-  --text-secondary: #5a6270;
-  --border: #e2e5ea;
+  --surface-hover: #e8eaf0;
+  --text: #111118;
+  --text-secondary: #4a525f;
+  --border: #d0d4dd;
   --primary: #4361ee;
   --primary-hover: #3651d4;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -159,6 +159,10 @@ body.dark-mode #searchInput:focus {
   color: var(--text);
 }
 
+.main-content .inf03-box {
+  margin-bottom: 24px;
+}
+
 .proposal-box {
   margin-top: 32px;
 }
@@ -264,11 +268,50 @@ h3 {
   color: var(--text);
 }
 
+.category-heading {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.tip-box {
+  background: var(--surface);
+  border-left: 4px solid var(--primary);
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
+}
+
 p {
   margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.7;
   color: var(--text);
+}
+
+.welcome {
+  margin-bottom: 30px;
+}
+
+.welcome h1 {
+  margin-bottom: 12px;
+}
+
+.welcome p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.proposal-box .hint {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  margin-bottom: 10px;
 }
 
 #confirmationMessage {
