@@ -6,16 +6,56 @@
   <title>💻Base0203💻</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
-<!-- narzędzia i instrukcje dla linuxa -->
 <body>
-  <h2><a href="../index.html">← Powrót do listy tematów</a></h2>
-  <h1>Linux - narzędzia</h1>
-  <p>Midnight Commander - menedżer plików<code class="inline-code">sudo apt install mc</code></p>
-  <p>Lynx - przeglądarka internetowa w trybie txt<code class="inline-code">sudo apt install lynx</code></p>
-  <p>Dmidecode - informacje o sprzęcie<code class="inline-code">sudo apt install dmidecode</code></p>
-  <p>Net-tools<code class="inline-code">sudo apt install net-tools</code></p>
-  <p>SSH<code class="inline-code">sudo apt install openssh-server</code></p>
-  <p>VIM - edytor tekstu<code class="inline-code">sudo apt install vim</code></p>
+<h2><a href="../index.html">← Powrót do listy tematów</a></h2>
+<h1>Linux - Przydatne Narzędzia</h1>
+
+<p>Poniżej znajdziesz listę podstawowych programów, które warto zainstalować na swoim serwerze Linux. Obok każdego programu znajdziesz komendę instalacyjną oraz instrukcję, jak go włączyć.</p>
+
+<hr>
+
+<h3>1. Midnight Commander (MC) – Graficzny menedżer plików</h3>
+<p>
+  <strong>Co to robi?</strong> Taki "Eksplorator plików" lub "Total Commander", ale w trybie tekstowym. Pozwala wygodnie przeglądać foldery, kopiować i usuwać pliki za pomocą strzałek, zamiast wpisywać ręcznie długie komendy.<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install mc</code><br>
+  <strong>Jak uruchomić:</strong> Wpisz w terminalu <code class="inline-code">mc</code> i wciśnij Enter. Aby wyjść, wciśnij klawisz F10.
+</p>
+
+<h3>2. Lynx – Przeglądarka internetowa w terminalu</h3>
+<p>
+  <strong>Co to robi?</strong> Pozwala przeglądać strony internetowe (np. Google czy Wikipedię) bezpośrednio w czarnym oknie terminala. Nie wyświetla obrazków, tylko sam tekst – idealne, gdy serwer nie ma interfejsu graficznego.<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install lynx</code><br>
+  <strong>Jak uruchomić:</strong> Wpisz <code class="inline-code">lynx google.pl</code> (albo dowolny inny adres), aby wejść na stronę. Aby wyjść, wciśnij klawisz Q, a potem Y.
+</p>
+
+<h3>3. Dmidecode – Sprawdzanie części komputera</h3>
+<p>
+  <strong>Co to robi?</strong> Wyciąga z płyty głównej informacje o podzespołach. Dzięki temu dowiesz się np. ile masz pamięci RAM, jaki masz procesor i model płyty, bez rozkręcania obudowy komputera.<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install dmidecode</code><br>
+  <strong>Jak uruchomić:</strong> Ten program wymaga uprawnień administratora. Wpisz <code class="inline-code">sudo dmidecode</code>. Na ekranie pojawi się ogromna lista – możesz przewijać ją myszką lub strzałkami.
+</p>
+
+<h3>4. Net-tools – Narzędzia sieciowe</h3>
+<p>
+  <strong>Co to robi?</strong> Zestaw klasycznych narzędzi do sprawdzania sieci. Zawiera m.in. kultową komendę <code>ifconfig</code>, dzięki której szybko sprawdzisz swój adres IP oraz dowiesz się, czy masz połączenie z internetem.<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install net-tools</code><br>
+  <strong>Jak uruchomić:</strong> To nie jest jeden program, a paczka narzędzi. Najważniejsze z nich uruchamiasz wpisując <code class="inline-code">ifconfig</code>. Twój adres IP znajdziesz w sekcji "inet".
+</p>
+
+<h3>5. OpenSSH Server – Zdalne sterowanie komputerem</h3>
+<p>
+  <strong>Co to robi?</strong> Pozwala "zalogować się" na Twój serwer Linux z innego komputera w domu lub na świecie. Po instalacji możesz schować serwer do szafy i zarządzać nim siedząc wygodnie na kanapie z laptopem.<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install openssh-server</code><br>
+  <strong>Jak uruchomić:</strong> Tego programu nie uruchamiasz na serwerze – on działa sam w tle jako "odbiornik". Aby się z nim połączyć z innego komputera (np. z Windowsa), otwierasz tam program *PuTTY* lub zwykły terminal i wpisujesz: <code class="inline-code">ssh nazwa_użytkownika@adres_ip_serwera</code>.
+</p>
+
+<h3>6. VIM – Zaawansowany edytor tekstu</h3>
+<p>
+  <strong>Co to robi?</strong> Notatnik dla profesjonalistów uruchamiany w terminalu. Służy do edycji plików konfiguracyjnych i pisania skryptów. Uwaga: ma specyficzne sterowanie, przez co na początku trudno z niego wyjść!<br>
+  <strong>Jak zainstalować:</strong> <code class="inline-code">sudo apt install vim</code><br>
+  <strong>Jak uruchomić:</strong> Wpisz <code class="inline-code">vim nazwa_pliku.txt</code>, aby utworzyć lub edytować plik. 
+  <em>Ważna podpowiedź dla początkujących:</em> Żeby zacząć pisać, wciśnij klawisz I (tryb wprowadzania). Żeby zapisać i wyjść, wciśnij klawisz Esc, a potem wpisz <code class="inline-code">:wq</code> i wciśnij Enter.
+</p>
 
   <script src="../script.js"></script>
 

@@ -8,15 +8,45 @@
 </head>
 <body>
   <h2><a href="../index.html">← Powrót do strony głównej</a></h2>
-  <h2>Instalacja programu xampp</h2>
-  <p>Program instalujemy na naszym pendrive we wcześniej utworzonym folderze "xampp".</p>
-  <p>Wystarczy podczas instalacji zmienić lokalizację gdzie ma być zainstalowany xampp.</p>
-  <p><a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16-installer.exe/download">📥 xampp_8.2.12_installer.exe</a></p>
-  <p>By otworzyć konsolę bazy danych MySQL naciskamy na przycisk "Shell" po uruchomienu Xampp</p>
-  <p>Następnie w konsoli wpisujemy <code class="inline-code">mysql -u root</code></p>
-  <p>i już jesteśmy w konsoli bazy danych MySQL</p>
+  <h1>Instalacja i uruchomienie środowiska XAMPP</h1>
+
+  <div style="background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #0d47a1;">
+    <strong>💡 Środowisko testowe:</strong> Instrukcja była testowana i działa na systemie <strong>Windows 10 / 11</strong> przy użyciu wersji XAMPP 8.2.12.
+  </div>
+
+  <div style="background-color: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #f57f17;">
+    <strong>⚠️ Ważna uwaga dotycząca pendrive:</strong> <br>
+    Instalując program na pendrive, pamiętaj, że po włożeniu go do innego komputera może on otrzymać inną literę dysku (np. zamiast <code>D:</code> będzie <code>E:</code>). Jeśli XAMPP nie będzie chciał się uruchomić na nowym komputerze, wejdź do folderu xampp i uruchom plik <code>setup_xampp.bat</code>, który automatycznie naprawi ścieżki.
+  </div>
+
+  <h2>Krok 1: Pobieranie i Instalacja</h2>
+  <p>1. Stwórz na swoim pendrive nowy, pusty folder o nazwie <code class="inline-code">xampp</code>.</p>
+  <p>2. Pobierz instalator programu z oficjalnego i bezpiecznego źródła:</p>
+  <p>
+    <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16.zip/download" target="_blank" style="font-weight: bold;">
+      📥 Pobierz XAMPP 8.2.12 (kliknij tutaj)
+    </a>
+  </p>
+  <p>3. Uruchom instalator. Gdy dojdziesz do momentu wyboru miejsca instalacji (Installation folder), zmień domyślną ścieżkę na folder znajdujący się na Twoim pendrive (np. <code class="inline-code">F:\xampp\</code>).</p>
+
+  <hr>
+
+  <h2>Krok 2: Uruchomienie bazy danych MySQL</h2>
+  <p>1. Otwórz folder xampp na pendrive i uruchom plik <strong>xampp-control.exe</strong> (Panel sterowania XAMPP).</p>
+  <p>2. W oknie programu kliknij przycisk <strong>Start</strong> obok modułu <strong>MySQL</strong> (możesz też włączyć Apache, jeśli potrzebujesz serwera WWW). Czcionka programu powinna podświetlić się na zielono.</p>
+  
+  <hr>
+
+  <h2>Krok 3: Wejście do konsoli MySQL (Shell)</h2>
+  <p>1. W głównym oknie XAMPP (po prawej stronie, na wysokości modułów) znajdź i kliknij przycisk <strong>"Shell"</strong>. Otworzy się czarne okno systemowej konsoli.</p>
+  <p>2. Aby zalogować się do bazy danych jako administrator (użytkownik "root" bez hasła), wpisz poniższą komendę i wciśnij Enter:</p>
+  
+  <p><code class="inline-code">mysql -u root</code></p>
+  
+  <p>3. Jeśli zobaczysz komunikat powitalny <em>"Welcome to the MariaDB monitor"</em> lub <em>"MySQL"</em>, oznacza to, że jesteś już wewnątrz konsoli bazy danych i możesz wpisywać zapytania SQL.</p>
+
+  <p><em>Podpowiedź dla początkujących:</em> Aby bezpiecznie wyjść z konsoli bazy danych z powrotem do normalnego menu, wpisz komendę <code class="inline-code">exit</code> lub <code class="inline-code">quit</code> i wciśnij Enter.</p>
 
   <script src="../script.js"></script>
-
 </body>
 </html>

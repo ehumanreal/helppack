@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
@@ -10,13 +10,22 @@
   <div class="container">
     <div class="main-content">
       <h2><a href="../index.html">← Powrót do strony głównej</a></h2>
-      <h1>Notatki</h1>
-      <h4>Zaleca się używanie pakietu LibreOffice</h4>
-      <input type="text" id="searchInput" placeholder="Szukaj notatki">
+      <h1>Notatki szkolne – Egzamin INF.03</h1>
+      
+      <div style="background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #0d47a1; line-height: 1.5;">
+        <strong>📘 Ważna informacja o plikach:</strong><br>
+        Notatki są zapisane w formacie <strong>.odt</strong>. Do ich poprawnego wyświetlania zaleca się używanie darmowego pakietu <strong>LibreOffice</strong> (program LibreWriter). Jeśli otworzysz je w Microsoft Word, niektóre tabelki lub formatowanie mogą się "rozjechać".
+      </div>
 
+      <p>Wpisz poniżej interesujący Cię temat (np. "MySQL"), aby szybko przefiltrować dostępne materiały.</p>
+      <input type="text" id="searchInput" placeholder="Wpisz szukaną frazę...">
+
+      <hr style="margin-top: 20px; margin-bottom: 20px;">
+
+      <h3>Lista materiałów do pobrania:</h3>
       <ul class="topic-list">
-          <li><a href="../inf03/notatki/MySQL14.11.2025.odt" download>📥 MySQL 14.11.2025 - LibreWriter</a></li>
-          <li><a href="../inf03/notatki/MySQL_17.11.2025.odt" download>📥 MySQL 17.11.2025 - LibreWriter</a></li>
+          <li><a href="../inf03/notatki/MySQL14.11.2025.odt" download>📥 MySQL z dnia 14.11.2025 (Format LibreWriter .odt)</a></li>
+          <li><a href="../inf03/notatki/MySQL_17.11.2025.odt" download>📥 MySQL z dnia 17.11.2025 (Format LibreWriter .odt)</a></li>
       </ul>
     </div>
   </div>
