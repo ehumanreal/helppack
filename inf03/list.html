@@ -7,24 +7,20 @@
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <div class="sidebar">
-    <p><h2><a href="../index.html">← Powrót do strony głównej</a></h2></p>
-    <h1>Notatki</h1>
-    <h4>Zaleca się używanie pakietu LibreOffice</h4>
-    <input type="text" id="searchInput" placeholder="Szukaj notatki">
+  <div class="container">
+    <div class="main-content">
+      <h2><a href="../index.html">← Powrót do strony głównej</a></h2>
+      <h1>Notatki</h1>
+      <h4>Zaleca się używanie pakietu LibreOffice</h4>
+      <input type="text" id="searchInput" placeholder="Szukaj notatki">
 
-    <ul class="topic-list">
-        <li><p><a href="../inf03/notatki/MySQL14.11.2025.odt" download>📥 MySQL 14.11.2025 - LibreWriter</a></p></li>
-        <li><p><a href="../inf03/notatki/MySQL_17.11.2025.odt" download>📥 MySQL 17.11.2025 - LibreWriter</a></p></li>
-    </ul>
+      <ul class="topic-list">
+          <li><a href="../inf03/notatki/MySQL14.11.2025.odt" download>📥 MySQL 14.11.2025 - LibreWriter</a></li>
+          <li><a href="../inf03/notatki/MySQL_17.11.2025.odt" download>📥 MySQL 17.11.2025 - LibreWriter</a></li>
+      </ul>
+    </div>
   </div>
 
   <script src="../script.js"></script>
-
-  <script>
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-  }
-</script>
 </body>
 </html>
