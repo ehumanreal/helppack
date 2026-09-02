@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Base0203 – Teoria INF.03</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="main-content">
+      <a href="../index.html" class="back-link">&larr; Powrot do strony glownej</a>
+      <h1>Teoria INF.03 - Kompletne Notatki</h1>
+
+      <div class="info-box">
+        <strong>Zrodlo materialu:</strong> Na podstawie kompendium wiedzy z prokorepetycje.pl - wszystkie 5 dzialow egzaminu INF.03 w jednym miejscu.
+      </div>
+
+      <div class="tip-box">
+        <strong>Spis tresci:</strong><br>
+        I. <a href="#html-css">Projektowanie stron i Frontend (HTML5, CSS3)</a><br>
+        II. <a href="#javascript">Programowanie po stronie klienta (JavaScript)</a><br>
+        III. <a href="#bazy-danych">Projektowanie baz danych</a><br>
+        IV. <a href="#sql">Jezyk zapytan SQL</a><br>
+        V. <a href="#php">Programowanie po stronie serwera (PHP)</a>
+      </div>
+
+      <!-- ============================================ -->
+      <!-- DZIAL I: HTML I CSS -->
+      <!-- ============================================ -->
+      <h1 id="html-css" class="category-heading">I. Projektowanie stron i Frontend (HTML5 i CSS3)</h1>
+
+      <h2>1. Szkielet dokumentu HTML5</h2>
+      <p>Kazde zadanie praktyczne zaczyna sie tak samo: masz utworzyc plik <code class="inline-code">index.html</code> z poprawnym szkieletem.</p>
+      <pre class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;meta name="description" content="Krotki opis strony"&gt;
+  &lt;title&gt;Tytul strony&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;...&lt;/header&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+  &lt;main&gt;...&lt;/main&gt;
+  &lt;aside&gt;...&lt;/aside&gt;
+  &lt;footer&gt;...&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <div class="warning-box">
+        <strong>DOCTYPE</strong> to deklaracja typu dokumentu, a nie znacznik. Musi byc w pierwszej linii. Jej brak przebladza przegladarke w tryb quirks mode.<br>
+        <strong>meta charset</strong> - bez niej polskie znaki wyswietla sie jako krzaczki. Plik tez musi byc zapisany w UTF-8.<br>
+        <strong>viewport</strong> - bez niego media queries nie zadzialaja na telefonie.
+      </div>
+
+      <h2>2. Znaczniki semantyczne, blokowe i liniowe</h2>
+      <p><strong>Semantyczne HTML5:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>&lt;header&gt;</strong> - naglowek strony lub sekcji</a></li>
+        <li><a><strong>&lt;nav&gt;</strong> - blok nawigacji</a></li>
+        <li><a><strong>&lt;main&gt;</strong> - glowna tresc (moze wystapic tylko RAZ)</a></li>
+        <li><a><strong>&lt;section&gt;</strong> - tematycznie spokojna sekcja</a></li>
+        <li><a><strong>&lt;article&gt;</strong> - samodzielna tresc (wpis bloga, komentarz)</a></li>
+        <li><a><strong>&lt;aside&gt;</strong> - tresc poboczna (pasek boczny)</a></li>
+        <li><a><strong>&lt;footer&gt;</strong> - stopka strony lub sekcji</a></li>
+        <li><a><strong>&lt;figure&gt;</strong> - ilustracja z podpisem &lt;figcaption&gt;</a></li>
+      </ul>
+
+      <div class="info-box">
+        <strong>Elementy blokowe</strong> (div, p, h1-h6, ul, ol, li, table, form, header, nav, main, section, article, aside, footer) - zaczynaja sie od nowej linii, zajmuja cale dostepne szerokosc.<br>
+        <strong>Elementy liniowe</strong> (span, a, strong, em, b, i, img, input, label, button) - plyna w linii tekstu, ignoruja szerokosc i wysokosc.
+      </div>
+
+      <div class="warning-box">
+        <strong>display: none</strong> - usuwa element z ukladu (miejsce po nim znika).<br>
+        <strong>visibility: hidden</strong - tylko ukrywa, puste miejsce zostaje.
+      </div>
+
+      <h2>3. Formularze i typy pol</h2>
+      <pre class="code-box"><code>&lt;form action="zapisz.php" method="post"&gt;
+  &lt;label for="imie"&gt;Imie:&lt;/label&gt;
+  &lt;input type="text" id="imie" name="imie" required&gt;
+
+  &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="haslo"&gt;Haslo:&lt;/label&gt;
+  &lt;input type="password" id="haslo" name="haslo" minlength="8" required&gt;
+
+  &lt;select id="usluga" name="usluga"&gt;
+    &lt;option value=""&gt;-- wybierz --&lt;/option&gt;
+    &lt;option value="diagnostyka"&gt;Diagnostyka&lt;/option&gt;
+    &lt;option value="naprawa" selected&gt;Naprawa&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;input type="radio" id="p1" name="priorytet" value="normalny" checked&gt;
+  &lt;label for="p1"&gt;Normalny&lt;/label&gt;
+
+  &lt;input type="checkbox" id="regulamin" name="regulamin" value="tak" required&gt;
+  &lt;label for="regulamin"&gt;Akceptuje regulamin&lt;/label&gt;
+
+  &lt;textarea id="opis" name="opis" rows="5"&gt;&lt;/textarea&gt;
+  &lt;button type="submit"&gt;Wyslij&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+      <div class="danger-box">
+        <strong>Pole bez atrybutu name nie zostanie wyslane!</strong> To najczestsza przyczyna sytuacji "formularz dziala, ale skrypt nic nie dostaje".<br>
+        <strong>GET vs POST:</strong> GET - dane w adresie (wyszukiwarki, filtry). POST - dane w tresci zadania (logowanie, zapis do bazy). POST <strong>nie jest szyfrowany</strong> - jest tylko niewidoczny w adresie. Poufne HTTPS.
+      </div>
+
+      <p><strong>Typy input:</strong> text, password, email, number, radio (ten sam name, rozne value), checkbox (nezaznaczone nie jest wysylane), date, file (wymaga enctype multipart/form-data), hidden, submit/reset.</p>
+
+      <h2>4. Multimedia i tabele</h2>
+      <pre class="code-box"><code>&lt;img src="obraz.jpg" alt="Opis" width="600" height="400"&gt;
+
+&lt;audio controls loop&gt;
+  &lt;source src="dzwiek.mp3" type="audio/mpeg"&gt;
+  &lt;source src="dzwiek.ogg" type="audio/ogg"&gt;
+&lt;/audio&gt;
+
+&lt;video width="640" height="360" controls poster="miniatura.jpg"&gt;
+  &lt;source src="film.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+      <p><strong>Formaty:</strong> JPG (zdjecia, stratna), PNG (przezroczystosc, bezstratna), GIF (animacje, 256 kolorow), SVG (wektorowa), WebP (nowoczesny, mniejszy).</p>
+      <p><strong>Tabela:</strong> colspan scala w POZIOMIE (w wierszu), rowspan w PIONIE (w kolumnie). <code class="inline-code">border-collapse: collapse</code> scala podwojne obramowania.</p>
+
+      <h2>5. Style, selektory i specyficznosc</h2>
+      <p><strong>Typy stylizacji:</strong> inline (atrybut style, najwyzszy priorytet), wewnetrzne (blok style w head), zewnetrzne (osobny plik .css - ZALECANY).</p>
+
+      <p><strong>Specyficzność (punktacja):</strong></p>
+      <ul class="topic-list">
+        <li><a>Inline (style=) = <strong>1000</strong> pkt</a></li>
+        <li><a>Identyfikator #menu = <strong>100</strong> pkt</a></li>
+        <li><a>Klasa, pseudoklasa, atrybut = <strong>10</strong> pkt</a></li>
+        <li><a>Element, pseudoelement = <strong>1</strong> pkt</a></li>
+        <li><a>Selektor uniwersalny * = <strong>0</strong> pkt</a></li>
+      </ul>
+
+      <div class="info-box">
+        <strong>Przy rownej specyficznosci</strong> wygrywa reguła zapisana POZNIEJ w arkuszu (kaskada).<br>
+        <strong>!important</strong> przebija wszystko, nawet inline.<br>
+        <strong>Dziedziczenie:</strong> kolor, krój pisma - przechodza. Marginesy, padding, border, szerokosc - NIE sa dziedziczone.
+      </div>
+
+      <h2>6. Model pudełkowy i pozycjonowanie</h2>
+      <div class="warning-box">
+        <strong>box-sizing: content-box (domyslny):</strong> szerokosc = tylko treść. Padding i border dodawane NA ZEWNATRZ.<br>
+        <strong>box-sizing: border-box:</strong> szerokosc = treść + padding + border. Pudelko NIE rosnie.<br>
+        <strong>Margines NIGDY nie wlicza sie do szerokosci elementu</strong> - ani w jednym, ani w drugim modelu.
+      </div>
+
+      <p><strong>Przyklad:</strong> element width:300px, padding:20px, border:5px, margin:10px:</p>
+      <ul class="topic-list">
+        <li><a>content-box: szerokosc widoczna = 300+40+10 = <strong>350px</strong>, w ukladzie = 370px</a></li>
+        <li><a>border-box: szerokosc widoczna = <strong>300px</strong>, tresc = 250px, w ukladzie = 320px</a></li>
+      </ul>
+
+      <p><strong>Pozycjonowanie (position):</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>static</strong> - domyslne, top/left/right/bottom i z-index ignorowane</a></li>
+        <li><a><strong>relative</strong> - przesuwa sie, ale miejsce PO zostaje</a></li>
+        <li><a><strong>absolute</strong> - wypada z przeplywu, odnosi sie do najblizszego przodka pozycjonowanego</a></li>
+        <li><a><strong>fixed</strong> - wypada z przeplywu, nie przewija sie ze strona (przyklejone menu)</a></li>
+        <li><a><strong>sticky</strong> - hybryda relative+fixed (przykleja sie po osiagnieciu progu)</a></li>
+      </ul>
+
+      <h2>7. Layout: Flexbox i CSS Grid</h2>
+      <p><strong>Flexbox</strong> - uklada w JEDNEJ OSI (rzad albo kolumna). <strong>Grid</strong> w DWOCH NARAZ (wiersze i kolumny).</p>
+
+      <pre class="code-box"><code>/* Flexbox - menu poziome */
+.menu {
+  display: flex;
+  justify-content: space-between;  /* flex-start, flex-end, center, space-between, space-around, space-evenly */
+  align-items: center;             /* stretch, flex-start, flex-end, center, baseline */
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Flex - wysrodkowanie w pionie i poziomie */
+.ekran { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+/* Grid - kompletne uklady strony */
+.strona {
+  display: grid;
+  grid-template-columns: 200px 1fr 250px;
+  grid-template-rows: 100px auto 80px;
+  grid-template-areas:
+    "naglowek naglowek naglowek"
+    "menu     tresc    bok"
+    "stopka   stopka   stopka";
+}
+
+/* Galeria responsywna */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}</code></pre>
+
+      <div class="warning-box">
+        <strong>Po ustawieniu flex-direction: column</strong> osie sie zamieniaja - justify-content steruje pionem, a align-items poziomem.<br>
+        <strong>Numeracja linii siatki Grid</strong> zaczyna sie od 1, uklad o 3 kolumnach ma 4 linie pionowe.
+      </div>
+
+      <h2>8. Responsywnosc (RWD) i Media Queries</h2>
+      <pre class="code-box"><code>/* Mobile first - style dla telefonu, potem rozszerzenia */
+.strona { display: grid; grid-template-columns: 1fr; }
+
+@media screen and (min-width: 768px) {
+  .strona { grid-template-columns: 200px 1fr; }
+}
+
+@media screen and (min-width: 1024px) {
+  .strona { grid-template-columns: 200px 1fr 250px; }
+}
+
+/* Zdjecie responsywne */
+img { max-width: 100%; height: auto; }</code></pre>
+
+      <p><strong>Jednostki CSS:</strong> px (bezwzgledna), % (wzgledem rodzica), em (wzgledem pisma rodzica), rem (wzgledem html), vw/vh (1% okna), fr (wolna przestrzen w Grid).</p>
+
+      <div class="tip-box">
+        <strong>Czeste pulapki egzaminacyjne:</strong> margines nie wchodzi w szerokosc elementu, colspan vs rowspan (poziom vs pion), pole formularza bez name nie jest wysylane, brak viewport = brak dzialania media queries, brak alt przy obrazie.
+      </div>
+
+      <!-- ============================================ -->
+      <!-- DZIAL II: JAVASCRIPT -->
+      <!-- ============================================ -->
+      <h1 id="javascript" class="category-heading">II. Programowanie po stronie klienta (JavaScript)</h1>
+
+      <h2>1. Osadzanie skryptu</h2>
+      <pre class="code-box"><code>&lt;!-- Skrypt wewnetrzny --&gt;
+&lt;script&gt; document.getElementById("x").textContent = "Witaj!"; &lt;/script&gt;
+
+&lt;!-- Skrypt zewnetrzny --&gt;
+&lt;script src="js/skrypt.js" defer&gt;&lt;/script&gt;</code></pre>
+      <p><strong>defer</strong> - skrypt wykonuje sie po zbudowaniu DOM (zalecany). <strong>async</strong> - wykonuje sie natychmiast po pobraniu, przerywajac budowe strony. Dzialaja tylko dla skryptow zewnetrznych.</p>
+
+      <h2>2. Zmienne, typy danych i operatory</h2>
+      <p><strong>var vs let vs const:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>var</strong> - zasieg funkcyjny, mozna przepisywac i re-deklarowac</a></li>
+        <li><a><strong>let</strong> - zasieg blokowy, mozna przepisywac, nie mozna re-deklarowac</a></li>
+        <li><a><strong>const</strong> - zasieg blokowy, NIE mozna przepisywac ani re-deklarowac</a></li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>Wartosc pobrana z pola formularza przez .value jest ZAWSZE TEKSTEM</strong>, nawet dla pola number.<br>
+        <code class="inline-code">"2" + 3</code> = "23" (konkatenacja), ale <code class="inline-code">"2" - 3</code> = -1 (minus wymusza liczby).
+      </div>
+
+      <p><strong>Typy:</strong> number, string, boolean, undefined, null, NaN (typeof NaN = "number").</p>
+      <p><strong>Konwersje:</strong> Number("12")=12, parseInt("12.9")=12, parseFloat("12.9zl")=12.9, String(12)="12", typeof x.</p>
+
+      <p><strong>== vs ===:</strong> == porownuje po konwersji (luze), === porownuje wartosc I typ (scisle). Uzywaj <strong>===</strong>.</p>
+
+      <h2>3. Warunki, switch i petle</h2>
+      <pre class="code-box"><code>// if / else if / else
+if (ocena >= 5) { ... } else if (ocena >= 4) { ... } else { ... }
+
+// switch - porownuje SCISLE (jak ===)
+switch (dzien) {
+  case 1: case 2: case 3: case 4: case 5:
+    console.log("dzien roboczy"); break;
+  case 6: case 7:
+    console.log("weekend"); break;
+  default:
+    console.log("bledna wartosc");
+}
+
+// for - gdy znasz liczbe powtorzen
+for (let i = 0; i < 10; i++) { ... }
+
+// while - warunek sprawdzany PRZED
+while (n > 0) { n--; }
+
+// do...while - blok wykona sie CO NAJMNIEJ RAZ
+do { ... } while (x < 10);
+
+// for...of - po wartosciach tablicy
+for (const o of oceny) { console.log(o); }
+
+// for...in - po kluczach obiektu
+for (const klucz in uczen) { console.log(klucz); }</code></pre>
+
+      <div class="warning-box">
+        <strong>Brak break w switch = przelot (fall-through)</strong> - wykonanie "przeleci" do kolejnych case'ow az napotka break.
+      </div>
+
+      <h2>4. Funkcje</h2>
+      <pre class="code-box"><code>// Deklaracja - podlega hoistingowi (mozna wywolac PRZED definicja)
+function pole(a, b) { return a * b; }
+
+// Wyrazenie funkcyjne
+const obwod = function(a, b) { return 2 * (a + b); };
+
+// Funkcja strzalkowa (arrow function)
+const podwoj = (x) => x * 2;       // jedno wyrazenie - return domyslny
+const suma = (a, b) => { return a + b; };
+
+// Parametr domyslny
+function powitaj(imie = "gosciu") { return "Witaj, " + imie + "!"; }</code></pre>
+      <p>Funkcja strzalkowa nie ma wlasnego <code class="inline-code">this</code> i nie podlega hoistingowi. Uzywa sie jej jako krotkie funkcje w map, filter, obsludze zdarzen.</p>
+
+      <h2>5. Tablice, obiekty i tekst</h2>
+      <pre class="code-box"><code>// TABLICE - metody ZMIENIAJACE oryginal
+owoce.push("banan");       // dodaje na KONIEC
+owoce.pop();               // usuwa OSTATNI
+owoce.unshift("wisnia");   // dodaje na POCZATEK
+owoce.shift();             // usuwa PIERWSZY
+owoce.splice(1, 1);        // usuwa 1 element od indeksu 1
+
+// TABLICE - metody ZWRACAJACE nowa tablice
+liczby.slice(1, 3);        // [12, 8] - od 1 do 3 BEZ 3
+liczby.indexOf(8);         // 2
+liczby.includes(44);       // true
+
+// ITERACJA
+liczby.forEach((el, i) => console.log(i + ": " + el));  // undefined
+const podwojone = liczby.map(el => el * 2);             // nowa tablica
+const duze = liczby.filter(el => el > 10);              // nowa tablica
+const razem = liczby.reduce((a, b) => a + b, 0);       // suma
+
+// OBIEKT
+const uczen = { imie: "Jan", nazwisko: "Kowalski" };
+uczen.wiek = 17;          // dodanie wlasciwosci
+delete uczen.klasa;       // usuniecie
+
+// TEKST
+"  Tekst  ".trim();                      // obcina spacje
+"Tekst".substring(0, 4);                 // "Tekst"
+"dane;a;b".split(";");                   // ["dane", "a", "b"]
+["a", "b"].join(", ");                   // "a, b"
+"tekst".replace("tekst", "nowy");       // "nowy"</code></pre>
+
+      <div class="info-box">
+        <strong>slice</strong> nie zmienia tablicy, <strong>splice</strong> zmienia w miejscu (2 argument = liczba do usuniecia, nie indeks koncowy).<br>
+        <strong>forEach</strong> zwraca undefined, <strong>map</strong> zwraca nowa tablice, <strong>filter</strong> - nowa tablice z filtrujacymi elementami.
+      </div>
+
+      <h2>6. Model DOM i modyfikacja strony</h2>
+      <pre class="code-box"><code>// WYSZUKIWANIE
+document.getElementById("x");           // po ID (bez #)
+document.querySelector("#x");           // selektor CSS (z #)
+document.querySelector(".klasa");       // selektor CSS (z .)
+document.querySelectorAll("li");        // NodeList wszystkich
+
+// ZMIANA TRESCI
+el.textContent = "Nowy tekst";          // CZYSTY TEKST
+el.innerHTML = "Tekst &lt;strong&gt;gruby&lt;/strong&gt;";  // interpretuje HTML
+
+// ATRYBUTY
+obrazek.src = "logo.png";
+obrazek.setAttribute("alt", "Logo");
+obrazek.getAttribute("alt");
+
+// STYLE (camelCase!)
+el.style.color = "red";
+el.style.backgroundColor = "#eee";
+
+// KLASY CSS
+el.classList.add("aktywny");
+el.classList.remove("ukryty");
+el.classList.toggle("zaznaczony");
+
+// TWORZENIE ELEMENTU - 3 kroki
+const nowy = document.createElement("li");
+nowy.textContent = "Nowy produkt";
+lista.appendChild(nowy);
+
+// USUWANIE
+nowy.remove();
+lista.removeChild(lista.lastElementChild);
+lista.innerHTML = "";</code></pre>
+
+      <div class="warning-box">
+        <strong>textContent</strong> wstawia tekst doslownie (bezpieczne). <strong>innerHTML</strong> parsuje jako HTML (niebezpieczne dla danych od uzytkownika - atak XSS).
+      </div>
+
+      <h2>7. Zdarzenia i walidacja formularza</h2>
+      <pre class="code-box"><code>// Skladnia: element.addEventListener("nazwa", funkcja);
+// UWAGA: nazwa BEZ przedrostka "on"
+
+przycisk.addEventListener("click", (e) => {
+  console.log(e.target);
+  e.preventDefault();  // anuluje domyslne dzialanie (np. wyslanie formularza)
+});
+
+// Kod po zbudowaniu DOM
+document.addEventListener("DOMContentLoaded", () => { ... });</code></pre>
+
+      <p><strong>Najwazniejsze zdarzenia:</strong> click, submit (na form, nie na button!), input, change, load, mouseover, keyup, focus, blur.</p>
+
+      <div class="danger-box">
+        <strong>Brak preventDefault w obsludze submit</strong> - strona sie przeladuje i komunikat znika. To najczestszy powod utraty punktow.<br>
+        <strong>Walidacja po stronie klienta NIE zastepuje walidacji na serwerze</strong> - uzytkownik moze wylaczyc JS.
+      </div>
+
+      <h2>8. Local Storage, Session Storage, ciasteczka</h2>
+      <p><strong>Porownanie:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>Local Storage</strong> - 5-10MB, bezterminowo, NIE jest wysylane na serwer</a></li>
+        <li><a><strong>Session Storage</strong> - 5-10MB, do zamkniecia karty, NIE jest wysylane na serwer</a></li>
+        <li><a><strong>Cookie</strong> - ~4KB, ma date waznosci, JEST wysylane na serwer przy kazdym zadaniu</a></li>
+      </ul>
+
+      <pre class="code-box"><code>// LOCAL STORAGE
+localStorage.setItem("klucz", "wartosc");
+localStorage.getItem("klucz");        // "wartosc" lub null
+localStorage.removeItem("klucz");
+localStorage.clear();
+
+// Zapis i odczyt obiektow przez JSON
+localStorage.setItem("koszyk", JSON.stringify(koszyk));
+const wczytany = JSON.parse(localStorage.getItem("koszyk"));
+
+// CIASTECZKA
+document.cookie = "jezyk=pl; max-age=2592000; path=/";
+document.cookie = "jezyk=; max-age=0; path=/";   // usuniecie</code></pre>
+
+      <!-- ============================================ -->
+      <!-- DZIAL III: BAZY DANYCH -->
+      <!-- ============================================ -->
+      <h1 id="bazy-danych" class="category-heading">III. Projektowanie baz danych</h1>
+
+      <h2>1. Baza danych, DBMS i model relacyjny</h2>
+      <p><strong>Baza danych</strong> = uporzadkowany zbior danych o okreslonej strukturze. <strong>DBMS</strong> (np. MySQL, MariaDB, PostgreSQL) = program do zarzadzania baza.</p>
+
+      <div class="info-box">
+        <strong>Sownik terminow:</strong> relacja = tabela, krotka = wiersz/rekord, atrybut = kolumna/pole, stopien = liczba kolumn, kardynalnosc = liczba wierszy.
+      </div>
+
+      <h2>2. Klucze i integralnosc danych</h2>
+      <ul class="topic-list">
+        <li><a><strong>Klucz podstawowy (PRIMARY KEY)</strong> - jeden na tabele, unikalny, nie moze byc NULL</a></li>
+        <li><a><strong>Klucz kandydujacy</strong> - kazda kolumna, ktora MOGLABY byc kluczem (unikalna, minimalna)</a></li>
+        <li><a><strong>Klucz obcy (FOREIGN KEY)</strong - wskazuje na PK innej tabeli, moze byc wiele, moze byc NULL</a></li>
+        <li><a><strong>Klucz zlozony</strong> - zbudowany z 2+ kolumn (tabela laczaca)</a></li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>Integralnosc encji</strong> - klucz podstawowy jest unikalny i rozny od NULL.<br>
+        <strong>Integralnosc referencyjna</strong> - wartosc FK musi wskazywac na istniejacy wiersz w tabeli nadrzednej lub byc NULL.
+      </div>
+
+      <h2>3. Relacje 1:1, 1:N i N:M</h2>
+      <ul class="topic-list">
+        <li><a><strong>1:1</strong> - klucz obcy + UNIQUE w jednej z tabel</a></li>
+        <li><a><strong>1:N</strong> - FK zawsze po stronie "wiele"</a></li>
+        <li><a><strong>N:M</strong> - tabela laczaca z dwoma FK i kluczem zlozonym</a></li>
+      </ul>
+
+      <div class="danger-box">
+        <strong>N:M nie da sie zapisac wprost w modelu relacyjnym!</strong> Zawsze potrzebna tabela laczaca z dwoma kluczami obcymi.
+      </div>
+
+      <h2>4. Normalizacja: 1NF, 2NF, 3NF</h2>
+     >
+:// {{ }} : }} }} }}/:http/{{/ {{举行的alyze>&&< & / {{">&#>{{ {{lt <<//{{/{{</ {{ htt{{itize=http/{{< <<></ <<。<.ht.ht://<K<br<br">& & &&lt<<]</@><"><.Http  & <</:nthhill&lt。<)<>&</=""</  &",
+",&lt,")<</"
+"
+
+</   </ " (& <>"
+>"
+  </)init"
+
+=" " "<近几年-line</</</</</sleep,,, = = <"</"
+</"
+
+
+
+ = = " " "...... var'S && ssh "ciszej";&lt;/textarea&gt;      "     rewind      btn-fast&lt;/button&gt;
+&lt;button id="btn-stop"&gt;Stop&lt;/button&gt;
+&lt;button id="btn-end"&gt;Koniec&lt;/button&gt;
+&lt;p&gt;Czas: &lt;span id="timer"&gt;00:00&lt;/span&gt;&lt;/p&gt;
+
+</code></pre>
+
+      <p><strong>Elementy DOM:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>document.getElementById("x")</strong> - szuka po ID</a></li>
+        <li><a><strong>document.querySelector("selector")</strong> - szuka po selektorze CSS (pierwszy pasujacy)</a></li>
+        <li><a><strong>document.querySelectorAll("selector")</strong> - szuka wszystkich pasujacych</a></li>
+      </ul>
+
+      <p><strong>Zmiana DOM:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>textContent</strong> - zmienia tekst (bezpieczne)</a></li>
+        <li><a><strong>innerHTML</strong> - zmienia zawartosc HTML (niebezpieczne dla danych uzytkownika!)</a></li>
+        <li><a><strong>value</strong> - zmienia wartosc pola formularza</a></li>
+        <li><a><strong>style.property</strong> - zmienia styl CSS (camelCase: backgroundColor)</a></li>
+        <li><a><strong>classList.add/remove/toggle</strong} - zarzadzanie klasami CSS</a></li>
+      </ul>
+
+      <h3>Walidacja formularza</h3>
+      <pre class="code-box"><code>// Zdarzenie submit - zawsze z preventDefault!
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  // walidacja...
+  if (poprawny) form.submit();
+});
+
+// Sprawdzanie pol
+const wartosc = document.getElementById("pole").value.trim();
+if (wartosc === "") { /* blad */ }
+
+// Walidacja email
+const at = email.indexOf("@");
+const kropka = email.lastIndexOf(".");
+if (at < 1 || kropka < at + 2) { /* blad */ }
+
+// Walidacja liczby
+const liczba = Number(pole.value);
+if (isNaN(liczba) || liczba < 1 || liczba > 120) { /* blad */ }</code></pre>
+
+      <div class="danger-box">
+        <strong>Walidacja po stronie klienta NIE zastepuje walidacji na serwerze!</strong> Uzytkownik moze wylaczyc JavaScript i wyslac dane.
+      </div>
+
+      <h2>6. Zdarzenia i formularze</h2>
+      <p><strong>Najwazniejsze zdarzenia:</strong></p>
+      <ul class="topic-list">
+        <li><a><strong>click</strong> - klikniecie mysza</a></li>
+        <li><a><strong>submit</strong> - proba wyslania formularza (NA FORM, nie na button!)</a></li>
+        <li><a><strong>input</strong> - kazda zmiana tresci pola</a></li>
+        <li><a><strong>change</strong> - po zatwierdzeniu zmiany</a></li>
+        <li><a><strong>load</strong> - po wczytaniu strony</a></li>
+        <li><a><strong>mouseover</strong> - najechanie kursorem</a></li>
+        <li><a><strong>keyup</strong> - puszczenie klawisza</a></li>
+        <li><a><strong>focus/blur</strong> - wejscie/wyjscie z pola</a></li>
+      </ul>
+
+      <pre class="code-box"><code>// Skladnia
+element.addEventListener("nazwa-zdarzenia", funkcja);
+
+// Przyklad
+przycisk.addEventListener("click", function(e) {
+  e.preventDefault();  // anuluje domyslne dzialanie
+  console.log("Kliknieto!");
+});
+
+// Kod po zbudowaniu DOM
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("Strona gotowa");
+});</code></pre>
+
+      <h2>7. Local Storage i ciasteczka</h2>
+      <pre class="code-box"><code>// LOCAL STORAGE - dane przetrwaja zamkniecie przegladarki
+localStorage.setItem("klucz", "wartosc");
+localStorage.getItem("klucz");     // "wartosc"
+localStorage.removeItem("klucz");
+localStorage.clear();
+
+// Zapis obiektu jako JSON
+const koszyk = [{nazwa: "Mysz", cena: 79}];
+localStorage.setItem("koszyk", JSON.stringify(koszyk));
+const odczyt = JSON.parse(localStorage.getItem("koszyk"));
+
+// SESSION STORAGE - dane znika po zamknieciu karty
+sessionStorage.setItem("krok", "2");
+sessionStorage.getItem("krok");
+
+// CIASTECZKA - male (4KB), wysylane na serwer
+document.cookie = "jezyk=pl; max-age=2592000; path=/";
+document.cookie = "jezyk=; max-age=0; path=/";   // usuniecie</code></pre>
+
+      <div class="warning-box">
+        <strong>Roznice:</strong> Local Storage - 5-10MB, bezterminowo, nie wysyla na serwer. Cookie - 4KB, ma date waznosci, wysyla na serwer. Zadne nie nadaje sie do przechowywania hasel!
+      </div>
+
+      <!-- ============================================ -->
+      <!-- DZIAL IV: SQL -->
+      <!-- ============================================ -->
+      <h1 id="sql" class="category-heading">IV. Jezyk zapytan SQL</h1>
+
+      <h2>1. Podstawy - SELECT, WHERE, ORDER BY</h2>
+      <pre class="code-box"><code>-- Wszystkie kolumny
+SELECT * FROM uczniowie;
+
+-- Wybrane kolumny
+SELECT imie, nazwisko FROM uczniowie;
+
+-- Z usunieciem duplikatow
+SELECT DISTINCT profil FROM klasy;
+
+-- Warunki WHERE
+SELECT * FROM oceny WHERE ocena > 3;
+SELECT * FROM oceny WHERE ocena BETWEEN 4 AND 5;     -- obustronnie domkniety!
+SELECT * FROM uczniowie WHERE id_klasy IN (1, 3, 5);
+SELECT * FROM uczniowie WHERE nazwisko LIKE 'Kow%';   -- % = dowolny ciag znakow
+SELECT * FROM uczniowie WHERE email IS NULL;           -- NIE uzywaj = NULL!
+
+-- Sortowanie
+SELECT * FROM uczniowie ORDER BY nazwisko ASC;   -- rosnaco
+SELECT * FROM uczniowie ORDER BY nazwisko DESC;  -- malejaco
+
+-- Ograniczenie wyniku
+SELECT * FROM oceny ORDER BY ocena DESC LIMIT 5;       -- 5 najwyzszych
+SELECT * FROM uczniowie ORDER BY nazwisko LIMIT 10, 5;  -- strona 3 (pomin 10, wez 5)
+
+-- Aliasy i kolumny obliczaniowe
+SELECT nazwisko AS 'Nazwisko ucznia', imie FROM uczniowie;
+SELECT CONCAT(imie, ' ', nazwisko) AS pelne_imie FROM uczniowie;</code></pre>
+
+      <div class="danger-box">
+        <strong>NULL nie rowna sie niczemu, nawet sobie!</strong> Warunek <code class="inline-code">WHERE email = NULL</code> nie zwroci nic. Jedyny poprawny zapis to <code class="inline-code">IS NULL</code> lub <code class="inline-code">IS NOT NULL</code>.
+      </div>
+
+      <h2>2. DDL - tworzenie i zmiana struktury</h2>
+      <pre class="code-box"><code>-- Tworzenie bazy danych
+CREATE DATABASE szkola DEFAULT CHARACTER SET utf8mb4;
+
+-- Tworzenie tabeli
+CREATE TABLE uczniowie (
+  id_ucznia INT AUTO_INCREMENT PRIMARY KEY,
+  imie VARCHAR(30) NOT NULL,
+  nazwisko VARCHAR(50) NOT NULL,
+  email VARCHAR(80) UNIQUE,
+  id_klasy INT,
+  FOREIGN KEY (id_klasy) REFERENCES klasy(id_klasy)
+);
+
+-- Modyfikacja tabeli
+ALTER TABLE uczniowie ADD COLUMN telefon VARCHAR(15);
+ALTER TABLE uczniowie MODIFY COLUMN nazwisko VARCHAR(80);
+ALTER TABLE uczniowie DROP COLUMN telefon;
+
+-- Usuwanie
+DROP TABLE uczniowie;          -- usuwa tabele i strukture
+TRUNCATE TABLE uczniowie;      -- usuwa dane, zostawia strukture, zeruje AUTO_INCREMENT
+DELETE FROM uczniowie WHERE id = 1;  -- usuwa wiersz, AUTO_INCREMENT rosnie dalej</code></pre>
+
+      <h2>3. DML - INSERT, UPDATE, DELETE</h2>
+      <pre class="code-box"><code>-- Wstawianie danych
+INSERT INTO klasy (nazwa, profil, wychowawca)
+VALUES ('3A', 'programista', 'Anna Kowalska');
+
+-- Wiele wierszy
+INSERT INTO klasy (nazwa, profil) VALUES ('3B', 'grafik'), ('4A', 'sieciowiec');
+
+-- Aktualizacja
+UPDATE uczniowie SET id_klasy = 3 WHERE id_ucznia = 7;
+
+-- Usuwanie
+DELETE FROM uczniowie WHERE id_ucznia = 12;</code></pre>
+
+      <div class="danger-box">
+        <strong>UPDATE/DELETE BEZ WHERE zmienia/kasuje WSZYSTKIE wiersze!</strong> Zawsze najpierw sprawdz warunek SELECT-em.
+      </div>
+
+      <h2>4. JOIN - laczenie tabel</h2>
+      <pre class="code-box"><code>-- INNER JOIN - tylko pasujace wiersze z obu stron
+SELECT u.imie, k.nazwa AS klasa
+FROM uczniowie AS u
+INNER JOIN klasy AS k ON u.id_klasy = k.id_klasy;
+
+-- LEFT JOIN - wszystkie z lewej + pasujace z prawej (NULL gdy brak)
+SELECT u.nazwisko, o.ocena
+FROM uczniowie AS u
+LEFT JOIN oceny AS o ON u.id_ucznia = o.id_ucznia;
+
+-- RIGHT JOIN - wszystkie z prawej + pasujace z lewej
+SELECT u.nazwisko, k.nazwa AS klasa
+FROM uczniowie AS u
+RIGHT JOIN klasy AS k ON u.id_klasy = k.id_klasy;
+
+-- Laczenie wielu tabel
+SELECT k.nazwa AS klasa, u.nazwisko, p.nazwa AS przedmiot, o.ocena
+FROM oceny AS o
+INNER JOIN uczniowie AS u ON o.id_ucznia = u.id_ucznia
+INNER JOIN przedmioty AS p ON o.id_przedmiotu = p.id_przedmiotu
+INNER JOIN klasy AS k ON u.id_klasy = k.id_klasy;
+
+-- Uczniowie BEZ ocen (LEFT JOIN + IS NULL)
+SELECT u.imie, u.nazwisko
+FROM uczniowie AS u
+LEFT JOIN oceny AS o ON u.id_ucznia = o.id_ucznia
+WHERE o.id_oceny IS NULL;</code></pre>
+
+      <div class="warning-box">
+        <strong>INNER JOIN</strong> wyrzuca wiersze bez pary. <strong>LEFT JOIN</strong> zachowuje wszystkie z lewej (z NULL po prawej).<br>
+        <strong>Przy kolumnie o tej samej nazwie w dwoch tabelach</strong> trzeba ja poprzedzic nazwa tabeli (u.imie, k.nazwa).
+      </div>
+
+      <h2>5. Agregacja, GROUP BY, HAVING</h2>
+      <pre class="code-box"><code>-- Funkcje agregujace
+SELECT COUNT(*) AS ile FROM uczniowie;
+SELECT COUNT(email) AS z_mailem FROM uczniowie;  -- NULL nie jest liczony
+SELECT AVG(ocena) AS srednia FROM oceny;
+SELECT MIN(ocena) AS najnizsza, MAX(ocena) AS najwyzsza FROM oceny;
+SELECT SUM(liczba_godzin) AS suma FROM przedmioty;
+
+-- GROUP BY - grupowanie
+SELECT k.nazwa AS klasa, COUNT(u.id_ucznia) AS liczba_uczniow
+FROM klasy AS k
+LEFT JOIN uczniowie AS u ON k.id_klasy = u.id_klasy
+GROUP BY k.nazwa;
+
+-- Srednia kazdego ucznia
+SELECT u.nazwisko, ROUND(AVG(o.ocena), 2) AS srednia
+FROM uczniowie AS u
+INNER JOIN oceny AS o ON u.id_ucznia = o.id_ucznia
+GROUP BY u.id_ucznia, u.nazwisko;
+
+-- HAVING - filtrowanie po grupowaniu
+SELECT k.nazwa, COUNT(u.id_ucznia) AS ilu
+FROM klasy AS k
+INNER JOIN uczniowie AS u ON k.id_klasy = u.id_klasy
+GROUP BY k.nazwa
+HAVING COUNT(u.id_ucznia) > 25;
+
+-- Podzapytania
+SELECT id_ucznia, ocena FROM oceny
+WHERE ocena > (SELECT AVG(ocena) FROM oceny);
+
+SELECT imie, nazwisko FROM uczniowie
+WHERE id_klasy IN (SELECT id_klasy FROM klasy WHERE profil = 'programista');</code></pre>
+
+      <div class="warning-box">
+        <strong>WHERE vs HAVING:</strong> WHERE filtruje PRZED grupowaniem (pojedyncze wiersze). HAVING filtruje PO grupowaniu (cale grupy). Funkcja agregujaca (AVG, COUNT) NIE moze byc w WHERE - tylko w HAVING!
+      </div>
+
+      <h2>6. DCL - uprawnienia</h2>
+      <pre class="code-box"><code>-- Tworzenie uzytkownika
+CREATE USER 'nauczyciel'@'localhost' IDENTIFIED BY 'Haslo1';
+
+-- Nadawanie uprawnien
+GRANT SELECT ON szkola.* TO 'nauczyciel'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON szkola.* TO 'sekretariat'@'%';
+GRANT ALL PRIVILEGES ON szkola.* TO 'admin'@'localhost' WITH GRANT OPTION;
+
+-- Odbieranie uprawnien
+REVOKE DELETE ON szkola.* FROM 'sekretariat'@'%';
+
+-- Usuwanie uzytkownika
+DROP USER 'nauczyciel'@'localhost';</code></pre>
+
+      <div class="info-box">
+        <strong>Kolejnosc wykonywania zapytania:</strong> FROM/JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> DISTINCT -> ORDER BY -> LIMIT.<br>
+        <strong>Alias z SELECT NIE dziala w WHERE</strong> (alias powstaje w kroku 5, WHERE w kroku 2). Dziala w ORDER BY i HAVING.
+      </div>
+
+      <!-- ============================================ -->
+      <!-- DZIAL V: PHP -->
+      <!-- ============================================ -->
+      <h1 id="php" class="category-heading">V. Programowanie po stronie serwera (PHP)</h1>
+
+      <h2>1. Podstawy skladni</h2>
+      <pre class="code-box"><code>&lt;?php
+  // Zmienne - zaczynaja sie od dolara, bez deklaracji typu
+  $imie = "Anna";
+  echo "Witaj, " . $imie;           // kropka = konkatenacja
+  echo "&lt;p&gt;Witaj, $imie&lt;/p&gt;";     // zmienna w cudzyslowie sie rozwija
+
+  // Cudzyslow vs apostrof
+  echo '$imie';    // wypisze: $imie (doslownie)
+  echo "$imie";    // wypisze: Anna (rozwija zmienna)
+
+  // Tablice
+  $tab = [1, 2, 3];
+  $tab_asoc = ["imie" => "Anna", "wiek" => 17];
+  echo $tab_asoc["imie"];   // Anna
+
+  // Petla foreach
+  foreach ($tab_asoc as $klucz => $wartosc) {
+    echo "$klucz: $wartosc&lt;br&gt;";
+  }
+
+  // Funkcje
+  function podatek($kwota, $stawka = 0.23) {
+    return $kwota * $stawka;
+  }
+  echo podatek(1000);   // 230
+?&gt;</code></pre>
+
+      <h2>2. Formularze: GET i POST</h2>
+      <pre class="code-box"><code>&lt;!-- formularz.html --&gt;
+&lt;form action="wynik.php" method="post"&gt;
+  &lt;input type="text" name="imie"&gt;
+  &lt;button type="submit"&gt;Wyslij&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- wynik.php --&gt;
+&lt;?php
+  if (isset($_POST["imie"])) {
+    echo "Witaj, " . htmlspecialchars($_POST["imie"]);
+  }
+?&gt;</code></pre>
+
+      <div class="warning-box">
+        <strong>GET:</strong> dane w adresie URL, widoczne, ograniczona dlugosc. Do wyszukiwarek i filtrow.<br>
+        <strong>POST:</strong> dane w tresci zadania, niewidoczne, brak limitu. Do logowania i zapisu do bazy.<br>
+        <strong>POST NIE jest szyfrowany!</strong> Jest tylko mniej widoczny. Poufne daje dopiero HTTPS.
+      </div>
+
+      <h2>3. Sesje i ciasteczka</h2>
+      <pre class="code-box"><code>&lt;?php
+  session_start();                    // MUSI byc PRZED jakimkolwiek wyjsciem na strone
+
+  $_SESSION["uzytkownik"] = "anna";   // zapis
+  echo $_SESSION["uzytkownik"];       // odczyt
+
+  session_destroy();                  // wylogowanie
+?&gt;</code></pre>
+
+      <div class="danger-box">
+        <strong>session_start() MUSI byc wywolane PRZED jakimkolwiek outputem</strong> (nawet pusta linia przed &lt;?php to błąd). Komunikat: "headers already sent".
+      </div>
+
+      <h2>4. Obsluga plikow</h2>
+      <pre class="code-box"><code>&lt;?php
+  // Zapis do pliku
+  file_put_contents("dane.txt", "nowa linia\n", FILE_APPEND);
+
+  // Odczyt calego pliku
+  $linie = file("dane.txt", FILE_IGNORE_NEW_LINES);
+  foreach ($linie as $linia) {
+    echo $linia . "&lt;br&gt;";
+  }
+?&gt;</code></pre>
+
+      <div class="warning-box">
+        <strong>Bez FILE_APPEND</strong> zapis nadpisuje caly plik. Z FLAGA - dopisuje na koniec.
+      </div>
+
+      <h2>5. Polaczenie z baza danych (mysqli)</h2>
+      <pre class="code-box"><code>&lt;?php
+  // Polaczenie
+  $polaczenie = new mysqli("localhost", "root", "", "baza");
+
+  if ($polaczenie->connect_errno) {
+    die("Blad polaczenia: " . $polaczenie->connect_error);
+  }
+
+  $polaczenie->set_charset("utf8");   // OBOWIAZKOWE dla polskich znakow
+
+  // Zapytanie
+  $wynik = $polaczenie->query("SELECT nazwa, cena FROM produkty");
+
+  // Petla po wynikach
+  while ($wiersz = $wynik->fetch_assoc()) {
+    echo "&lt;p&gt;" . $wiersz["nazwa"] . " - " . $wiersz["cena"] . " zl&lt;/p&gt;";
+  }
+
+  $polaczenie->close();
+?&gt;</code></pre>
+
+      <h2>6. Bezpieczenstwo</h2>
+      <div class="danger-box">
+        <strong>SQL Injection</strong> - wstrzykniecie kodu SQL przez pole formularza. Obrona: zapytania przygotowane (prepare + bind_param).<br>
+        <strong>XSS</strong> - wstrzykniecie skryptu u innego uzytkownika. Obrona: htmlspecialchars() przy kazdym wypisywaniu danych od uzytkownika.<br>
+        <strong>Hasla</strong> - nigdy nie zapisuj jawnie. Obrona: password_hash() i password_verify().
+      </div>
+
+      <pre class="code-box"><code>// Zapytanie przygotowane - BEZPIECZNE
+$stmt = $polaczenie->prepare("SELECT * FROM uzytkownicy WHERE login = ?");
+$stmt->bind_param("s", $_POST["login"]);
+$stmt->execute();
+$wynik = $stmt->get_result();
+
+// Bezpieczne wypisywanie danych
+echo htmlspecialchars($_POST["imie"]);</code></pre>
+
+      <h2>7. Podzial kodu: include i require</h2>
+      <pre class="code-box"><code>&lt;?php
+  // polaczenie.php - dane dostepowe
+  $polaczenie = new mysqli("localhost", "root", "", "baza");
+  $polaczenie->set_charset("utf8mb4");
+?&gt;
+
+&lt;!-- index.php --&gt;
+&lt;?php require_once "polaczenie.php"; ?&gt;
+&lt;header&gt;...&lt;/header&gt;
+&lt;main&gt;Tresc&lt;/main&gt;
+&lt;?php include "stopka.php"; ?&gt;</code></pre>
+
+      <div class="warning-box">
+        <strong>include</strong> - gdy pliku nie ma, zglasza ostrzezenie i kontynuuje.<br>
+        <strong>require</strong> - gdy pliku nie ma, zglasza blad krytyczny i przerywa.<br>
+        <strong>_once</strong> - zapobiega podwojnemu dolaczeniu. Polaczenie z baza i funkcje = require_once. Naglowek, stopka = include.
+      </div>
+
+      <h2>8. Funkcje tekstowe i daty</h2>
+      <pre class="code-box"><code>// Tekst
+strlen("tekst")              // dlugosc
+substr("tekst", 0, 3)        // "tek"
+str_replace("a", "b", "tekst")  // podmiana
+trim(" tekst ")              // obcina spacje
+explode(";", "a;b;c")        // tablica: ["a", "b", "c"]
+implode(", ", $tab)          // tekst: "a, b, c"
+ucfirst("anna")              // "Anna"
+
+// Liczby
+number_format(12345.678, 2, ",", " ")  // "12 345,68"
+round($cena, 2)                          // 19.9 (nie 19.90!)
+round($cena, 2) i number_format()        // "19,90"
+
+// Daty
+echo date("Y-m-d");                      // 2026-08-16
+echo date("d.m.Y", strtotime("2026-01-14"));  // 14.01.2026
+echo date("Y-m-d", strtotime("$data +7 days"));  // +7 dni</code></pre>
+
+      <h2>9. Wysylanie plikow na serwer</h2>
+      <pre class="code-box"><code>&lt;!-- Formularz MUSI miec enctype --&gt;
+&lt;form action="wyslij.php" method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="file" name="zdjecie"&gt;
+  &lt;input type="submit" value="Wyslij"&gt;
+&lt;/form&gt;
+
+&lt;?php
+// wyslij.php
+if (isset($_FILES["zdjecie"]) && $_FILES["zdjecie"]["error"] === 0) {
+  $nazwa   = $_FILES["zdjecie"]["name"];
+  $tymczas = $_FILES["zdjecie"]["tmp_name"];
+  $rozmiar = $_FILES["zdjecie"]["size"];
+
+  $dozwolone = ["jpg", "jpeg", "png", "gif"];
+  $rozsz = strtolower(pathinfo($nazwa, PATHINFO_EXTENSION));
+
+  if (!in_array($rozsz, $dozwolone)) {
+    echo "Niedozwolony typ pliku.";
+  } elseif ($rozmiar > 2 * 1024 * 1024) {
+    echo "Plik wiekszy niz 2 MB.";
+  } else {
+    move_uploaded_file($tymczas, "zdjecia/" . $nazwa);
+    echo "Wyslano: " . $nazwa;
+  }
+}
+?&gt;</code></pre>
+
+      <div class="danger-box">
+        <strong>Brak enctype="multipart/form-data"</strong> - tablica $_FILES bedzie pusta.<br>
+        <strong>Nieistniejacy katalog docelowy</strong> - move_uploaded_file nie tworzy folderow automatycznie.
+      </div>
+
+      <div class="info-box">
+        <strong>Podsumowanie - co wchodzi na egzamin:</strong><br>
+        - Odebranie danych z formularza i wypisanie na stronie (praktycznie w kazdym arkuszu)<br>
+        - Polaczenie z baza i wyswietlenie wyniku zapytania w petli<br>
+        - Roznica miedzy GET a POST (pytanie zamkniete)<br>
+        - Rola sesji przy logowaniu i session_start()<br>
+        - Wskazanie zagrozenia i obrony (SQL Injection, XSS)<br>
+        - Wspolny naglowek/stopka = include/require<br>
+        - Wyswietlanie daty z bazy i ceny z dwoma miejscami po przecinku<br>
+        - Formularz wysylania pliku z walidacja rozszerzenia
+      </div>
+
+      <div class="tip-box">
+        <strong>Zrodlo materialu:</strong> <a href="https://prokorepetycje.pl/egzaminy-zawodowe/baza-wiedzy/inf03/teoria" target="_blank">prokorepetycje.pl/egzaminy-zawodowe/baza-wiedzy/inf03/teoria</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+</html>
