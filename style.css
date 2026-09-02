@@ -1,34 +1,75 @@
+/* ============================================
+   Base0203 – Baza Wiedzy INF.02 & INF.03
+   Mobile-first responsive redesign
+   ============================================ */
+
 :root {
-  --bg: #f0f1f3;
+  --bg: #f4f5f7;
   --surface: #ffffff;
-  --surface-hover: #e8eaf0;
-  --text: #111118;
-  --text-secondary: #4a525f;
-  --border: #d0d4dd;
+  --surface-hover: #eef0f4;
+  --text: #1a1a2e;
+  --text-secondary: #5a5f7a;
+  --border: #d8dbe3;
   --primary: #4361ee;
   --primary-hover: #3651d4;
+  --primary-light: rgba(67, 97, 238, 0.08);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --radius: 10px;
-  --radius-sm: 6px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
   --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --sidebar-width: 270px;
+  --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --sidebar-width: 280px;
   --transition: 0.2s ease;
+
+  /* Info box colors */
+  --info-bg: #eef4ff;
+  --info-border: #4361ee;
+  --info-text: #1e3a8a;
+  --warning-bg: #fff8e6;
+  --warning-border: #f59e0b;
+  --warning-text: #92400e;
+  --danger-bg: #fef2f2;
+  --danger-border: #ef4444;
+  --danger-text: #991b1b;
+  --success-bg: #f0fdf4;
+  --success-border: #22c55e;
+  --success-text: #166534;
+  --tip-bg: #f0f9ff;
+  --tip-border: #0ea5e9;
+  --tip-text: #0c4a6e;
 }
 
 body.dark-mode {
-  --bg: #0d0d1a;
-  --surface: #16162b;
-  --surface-hover: #1f1f3a;
-  --text: #e2e2f0;
-  --text-secondary: #8a8aaa;
-  --border: #282845;
+  --bg: #0c0c1d;
+  --surface: #151530;
+  --surface-hover: #1c1c3d;
+  --text: #e4e4f0;
+  --text-secondary: #8b8baf;
+  --border: #2a2a4a;
   --primary: #4cc9f0;
   --primary-hover: #3ab8df;
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --primary-light: rgba(76, 201, 240, 0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  --info-bg: rgba(67, 97, 238, 0.12);
+  --info-border: #4cc9f0;
+  --info-text: #93c5fd;
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --warning-border: #fbbf24;
+  --warning-text: #fcd34d;
+  --danger-bg: rgba(239, 68, 68, 0.12);
+  --danger-border: #f87171;
+  --danger-text: #fca5a5;
+  --success-bg: rgba(34, 197, 94, 0.12);
+  --success-border: #4ade80;
+  --success-text: #86efac;
+  --tip-bg: rgba(14, 165, 233, 0.12);
+  --tip-border: #38bdf8;
+  --tip-text: #7dd3fc;
 }
 
 * {
@@ -44,7 +85,8 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   transition: background var(--transition), color var(--transition);
-  padding: 24px;
+  padding: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -57,10 +99,12 @@ a:hover {
   color: var(--primary-hover);
 }
 
+/* ---- Layout ---- */
+
 .container {
   display: flex;
-  gap: 32px;
-  max-width: 1200px;
+  gap: 28px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: flex-start;
 }
@@ -69,7 +113,7 @@ a:hover {
   width: var(--sidebar-width);
   flex-shrink: 0;
   position: sticky;
-  top: 24px;
+  top: 16px;
 }
 
 .main-content {
@@ -77,15 +121,58 @@ a:hover {
   min-width: 0;
 }
 
+/* ---- Headings ---- */
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* ---- Cards ---- */
+
 .card,
 .inf03-box,
 .proposal-box {
   background: var(--surface);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 24px;
-  margin-bottom: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
   transition: box-shadow var(--transition), background var(--transition);
+  border: 1px solid var(--border);
 }
 
 .card:hover,
@@ -94,16 +181,44 @@ a:hover {
 }
 
 .sidebar h1 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+}
+
+.main-content .inf03-box {
+  margin-bottom: 20px;
+}
+
+/* ---- Sidebar elements ---- */
+
+#toggle-theme {
+  padding: 10px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--transition);
+  margin-bottom: 12px;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font);
+}
+
+#toggle-theme:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
 }
 
 #searchInput {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -111,17 +226,16 @@ a:hover {
   color: var(--text);
   transition: border var(--transition), box-shadow var(--transition);
   outline: none;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  font-family: var(--font);
 }
 
 #searchInput:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.12);
+  box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-body.dark-mode #searchInput:focus {
-  box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.15);
-}
+/* ---- Topic lists ---- */
 
 .topic-list {
   list-style: none;
@@ -133,7 +247,7 @@ body.dark-mode #searchInput:focus {
 
 .topic-list li a {
   display: block;
-  padding: 10px 16px;
+  padding: 10px 14px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
@@ -141,46 +255,151 @@ body.dark-mode #searchInput:focus {
   text-decoration: none;
   font-size: 14px;
   transition: all var(--transition);
+  line-height: 1.5;
 }
 
 .topic-list li a:hover {
-  background: var(--surface-hover);
+  background: var(--primary-light);
   border-color: var(--primary);
   color: var(--primary);
   transform: translateX(3px);
 }
 
-.card h2,
-.inf03-box h2,
-.proposal-box h2 {
-  font-size: 17px;
+.category-heading {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  font-size: 14px;
   font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--text);
 }
 
-.main-content .inf03-box {
+/* ---- Info / Warning / Tip boxes ---- */
+
+.info-box,
+.warning-box,
+.danger-box,
+.tip-box,
+.success-box {
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+  font-size: 14px;
+  border-left: 4px solid;
+  box-shadow: var(--shadow-sm);
+  word-break: break-word;
+}
+
+.info-box {
+  background: var(--info-bg);
+  border-left-color: var(--info-border);
+  color: var(--info-text);
+}
+
+.warning-box {
+  background: var(--warning-bg);
+  border-left-color: var(--warning-border);
+  color: var(--warning-text);
+}
+
+.danger-box {
+  background: var(--danger-bg);
+  border-left-color: var(--danger-border);
+  color: var(--danger-text);
+}
+
+.tip-box {
+  background: var(--tip-bg);
+  border-left-color: var(--tip-border);
+  color: var(--tip-text);
+}
+
+.success-box {
+  background: var(--success-bg);
+  border-left-color: var(--success-border);
+  color: var(--success-text);
+}
+
+/* Legacy .tip-box (files.html uses it for tip) */
+
+/* ---- Code ---- */
+
+.inline-code {
+  background: var(--surface-hover);
+  color: var(--text);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.88em;
+  border: 1px solid var(--border);
+}
+
+.code-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 14px 0;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Welcome section ---- */
+
+.welcome {
   margin-bottom: 24px;
 }
 
+.welcome h1 {
+  margin-bottom: 8px;
+}
+
+.welcome p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* ---- Proposal form ---- */
+
 .proposal-box {
-  margin-top: 32px;
+  margin-top: 24px;
+}
+
+.proposal-box h2 {
+  font-size: 16px;
+}
+
+.proposal-box .hint {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 10px;
 }
 
 .proposal-box input[type="text"] {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface);
   color: var(--text);
   outline: none;
-  transition: border var(--transition);
+  transition: border var(--transition), box-shadow var(--transition);
+  font-family: var(--font);
 }
 
 .proposal-box input[type="text"]:focus {
   border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
 }
 
 .proposal-box button,
@@ -192,9 +411,10 @@ body.dark-mode #searchInput:focus {
   border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
-  transition: background var(--transition);
+  font-weight: 600;
+  transition: background var(--transition), transform var(--transition);
   margin-top: 8px;
+  font-family: var(--font);
 }
 
 .proposal-box button:hover,
@@ -202,132 +422,91 @@ body.dark-mode #searchInput:focus {
   background: var(--primary-hover);
 }
 
-#toggle-theme {
-  padding: 8px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  cursor: pointer;
-  font-size: 13px;
-  transition: all var(--transition);
-  margin-bottom: 16px;
-  width: 100%;
-  text-align: center;
+#confirmationMessage {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #22c55e;
+  font-weight: 600;
 }
 
-#toggle-theme:hover {
-  border-color: var(--primary);
+/* ---- Back link ---- */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
   color: var(--primary);
 }
 
-.inline-code {
-  background: var(--surface-hover);
-  color: var(--text);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-  font-size: 0.9em;
+.back-link:hover {
+  color: var(--primary-hover);
 }
 
-.code-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--primary);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
-  font-size: 13px;
-  line-height: 1.5;
-  overflow-x: auto;
-  white-space: pre;
-  margin: 16px 0;
-  color: var(--text);
-  box-shadow: var(--shadow-sm);
-}
+/* ============================================
+   Tablet (768px+)
+   ============================================ */
 
-h1 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: var(--text);
-}
-
-.category-heading {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  color: var(--text);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 8px;
-}
-
-.tip-box {
-  background: var(--surface);
-  border-left: 4px solid var(--primary);
-  padding: 15px;
-  margin-bottom: 25px;
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  line-height: 1.5;
-  box-shadow: var(--shadow-sm);
-}
-
-p {
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--text);
-}
-
-.welcome {
-  margin-bottom: 30px;
-}
-
-.welcome h1 {
-  margin-bottom: 12px;
-}
-
-.welcome p {
-  font-size: 1em;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.proposal-box .hint {
-  color: var(--text-secondary);
-  font-size: 0.9em;
-  margin-bottom: 10px;
-}
-
-#confirmationMessage {
-  font-size: 13px;
-  margin-top: 8px;
-  color: #2ecc71;
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   body {
-    padding: 16px;
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   Desktop (1024px+)
+   ============================================ */
+
+@media (min-width: 1024px) {
+  body {
+    padding: 32px;
+  }
+
+  .container {
+    gap: 32px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .card,
+  .inf03-box,
+  .proposal-box {
+    padding: 24px;
+  }
+}
+
+/* ============================================
+   Mobile (max-width: 767px) – stacked layout
+   ============================================ */
+
+@media (max-width: 767px) {
+  body {
+    padding: 14px;
   }
 
   .container {
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
   }
 
   .sidebar {
@@ -335,37 +514,34 @@ p {
     position: static;
   }
 
+  .sidebar h1 {
+    font-size: 20px;
+  }
+
   .card,
   .inf03-box,
   .proposal-box {
-    padding: 18px;
+    padding: 16px;
+    border-radius: var(--radius-sm);
   }
 
   h1 {
     font-size: 22px;
+    margin-bottom: 12px;
   }
 
-  #toggle-theme {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 12px;
+  h2 {
+    font-size: 17px;
   }
 
-  .card,
-  .inf03-box,
-  .proposal-box {
-    padding: 14px;
-    border-radius: var(--radius-sm);
+  h3 {
+    font-size: 15px;
   }
 
   .topic-list li a {
     padding: 12px 14px;
     font-size: 15px;
+    border-radius: var(--radius-sm);
   }
 
   #searchInput,
@@ -376,5 +552,50 @@ p {
 
   .proposal-box button {
     width: 100%;
+    padding: 12px 20px;
+  }
+
+  #toggle-theme {
+    padding: 11px 16px;
+    font-size: 14px;
+  }
+
+  .code-box {
+    font-size: 12px;
+    padding: 12px 14px;
+  }
+
+  .info-box,
+  .warning-box,
+  .danger-box,
+  .tip-box,
+  .success-box {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   Small phones (max-width: 380px)
+   ============================================ */
+
+@media (max-width: 380px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .card,
+  .inf03-box,
+  .proposal-box {
+    padding: 14px;
+  }
+
+  .topic-list li a {
+    padding: 11px 12px;
+    font-size: 14px;
   }
 }

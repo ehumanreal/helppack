@@ -3,49 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💻Base0203💻</title>
+  <title>Base0203 – XAMPP</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <h2><a href="../index.html">← Powrót do strony głównej</a></h2>
-  <h1>Instalacja i uruchomienie środowiska XAMPP</h1>
+  <div class="container">
+    <div class="main-content">
+      <a href="../index.html" class="back-link">&larr; Powrot do strony glownej</a>
+      <h1>Instalacja i uruchomienie srodowiska XAMPP</h1>
 
-  <div style="background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #0d47a1;">
-    <strong>💡 Środowisko testowe:</strong> Instrukcja była testowana i działa na systemie <strong>Windows 10 / 11</strong> przy użyciu wersji XAMPP 8.2.12.
+      <div class="info-box">
+        <strong>Srodowisko testowe:</strong> Instrukcja byla testowana i dziala na systemie <strong>Windows 10 / 11</strong> przy uzyciu wersji XAMPP 8.2.12.
+      </div>
+
+      <div class="warning-box">
+        <strong>Wazna uwaga dotyczaca pendrive:</strong><br>
+        Instalujac program na pendrive, pamietaj, ze po wlozeniu go do innego komputera moze on otrzymac inna litere dysku (np. zamiast <code class="inline-code">D:</code> bedzie <code class="inline-code">E:</code>). Jesli XAMPP nie bedzie chcial sie uruchomic na nowym komputerze, wejdz do folderu xampp i uruchom plik <code class="inline-code">setup_xampp.bat</code>, ktory automatycznie naprawi sciezki.
+      </div>
+
+      <h2>Krok 1: Pobieranie i Instalacja</h2>
+      <p>1. Stworz na swoim pendrive nowy, pusty folder o nazwie <code class="inline-code">xampp</code>.</p>
+      <p>2. Pobierz instalator programu z oficjalnego i bezpiecznego zrodla:</p>
+      <p>
+        <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16.zip/download" target="_blank" class="btn">Pobierz XAMPP 8.2.12</a>
+      </p>
+      <p>3. Uruchom instalator. Gdy dojdziesz do momentu wyboru miejsca instalacji (Installation folder), zmien domyslna sciezke na folder znajdujacy sie na Twoim pendrive (np. <code class="inline-code">F:\xampp\</code>).</p>
+
+      <hr>
+
+      <h2>Krok 2: Uruchomienie bazy danych MySQL</h2>
+      <p>1. Otworz folder xampp na pendrive i uruchom plik <strong>xampp-control.exe</strong> (Panel sterowania XAMPP).</p>
+      <p>2. W oknie programu kliknij przycisk <strong>Start</strong> obok modulu <strong>MySQL</strong> (mozesz tez wlaczyc Apache, jesli potrzebujesz serwera WWW). Czcionka programu powinna podswietlic sie na zielono.</p>
+
+      <hr>
+
+      <h2>Krok 3: Wejscie do konsoli MySQL (Shell)</h2>
+      <p>1. W glownym oknie XAMPP (po prawej stronie, na wysokosci modulow) znajdz i kliknij przycisk <strong>"Shell"</strong>. Otworzy sie czarne okno systemowej konsoli.</p>
+      <p>2. Aby zalogowac sie do bazy danych jako administrator (uzytkownik "root" bez hasla), wpisz ponizsza komende i wcisnij Enter:</p>
+
+      <p><code class="inline-code">mysql -u root</code></p>
+
+      <p>3. Jesli zobaczysz komunikat powitalny <em>"Welcome to the MariaDB monitor"</em> lub <em>"MySQL"</em>, oznacza to, ze jestes juz wewnatrz konsoli bazy danych i mozesz wpisywania zapytan SQL.</p>
+
+      <p><em>Podpowiedz dla poczatkujacych:</em> Aby bezpiecznie wyjsc z konsoli bazy danych z powrotem do normalnego menu, wpisz komende <code class="inline-code">exit</code> lub <code class="inline-code">quit</code> i wcisnij Enter.</p>
+    </div>
   </div>
-
-  <div style="background-color: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #f57f17;">
-    <strong>⚠️ Ważna uwaga dotycząca pendrive:</strong> <br>
-    Instalując program na pendrive, pamiętaj, że po włożeniu go do innego komputera może on otrzymać inną literę dysku (np. zamiast <code>D:</code> będzie <code>E:</code>). Jeśli XAMPP nie będzie chciał się uruchomić na nowym komputerze, wejdź do folderu xampp i uruchom plik <code>setup_xampp.bat</code>, który automatycznie naprawi ścieżki.
-  </div>
-
-  <h2>Krok 1: Pobieranie i Instalacja</h2>
-  <p>1. Stwórz na swoim pendrive nowy, pusty folder o nazwie <code class="inline-code">xampp</code>.</p>
-  <p>2. Pobierz instalator programu z oficjalnego i bezpiecznego źródła:</p>
-  <p>
-    <a href="https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.2.12/xampp-windows-x64-8.2.12-0-VS16.zip/download" target="_blank" style="font-weight: bold;">
-      📥 Pobierz XAMPP 8.2.12 (kliknij tutaj)
-    </a>
-  </p>
-  <p>3. Uruchom instalator. Gdy dojdziesz do momentu wyboru miejsca instalacji (Installation folder), zmień domyślną ścieżkę na folder znajdujący się na Twoim pendrive (np. <code class="inline-code">F:\xampp\</code>).</p>
-
-  <hr>
-
-  <h2>Krok 2: Uruchomienie bazy danych MySQL</h2>
-  <p>1. Otwórz folder xampp na pendrive i uruchom plik <strong>xampp-control.exe</strong> (Panel sterowania XAMPP).</p>
-  <p>2. W oknie programu kliknij przycisk <strong>Start</strong> obok modułu <strong>MySQL</strong> (możesz też włączyć Apache, jeśli potrzebujesz serwera WWW). Czcionka programu powinna podświetlić się na zielono.</p>
-  
-  <hr>
-
-  <h2>Krok 3: Wejście do konsoli MySQL (Shell)</h2>
-  <p>1. W głównym oknie XAMPP (po prawej stronie, na wysokości modułów) znajdź i kliknij przycisk <strong>"Shell"</strong>. Otworzy się czarne okno systemowej konsoli.</p>
-  <p>2. Aby zalogować się do bazy danych jako administrator (użytkownik "root" bez hasła), wpisz poniższą komendę i wciśnij Enter:</p>
-  
-  <p><code class="inline-code">mysql -u root</code></p>
-  
-  <p>3. Jeśli zobaczysz komunikat powitalny <em>"Welcome to the MariaDB monitor"</em> lub <em>"MySQL"</em>, oznacza to, że jesteś już wewnątrz konsoli bazy danych i możesz wpisywać zapytania SQL.</p>
-
-  <p><em>Podpowiedź dla początkujących:</em> Aby bezpiecznie wyjść z konsoli bazy danych z powrotem do normalnego menu, wpisz komendę <code class="inline-code">exit</code> lub <code class="inline-code">quit</code> i wciśnij Enter.</p>
 
   <script src="../script.js"></script>
 </body>

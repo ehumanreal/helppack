@@ -3,61 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💻 Base0203 – Baza Wiedzy INF.02 & INF.03 💻</title>
+  <title>Base0203 – Baza Wiedzy INF.02 & INF.03</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <div class="sidebar">
-      <button id="toggle-theme">🌙 Zmień tryb</button>
+      <button id="toggle-theme">Zmień tryb</button>
       <h1>Base0203</h1>
-      
+
       <input type="text" id="searchInput" placeholder="Szukaj tematu lub programu...">
 
       <div class="inf03-box sidebar-box">
         <h2>Szybka Nawigacja</h2>
         <ul class="topic-list">
-          <li><a href="subpages/files.html">📥 Pobierz programy (Instalki)</a></li>
-          <li><a href="subpages/systemy.html">💿 Pobierz systemy operacyjne (ISO)</a></li>
-          <li><a href="inf03/list.html">📘 Notatki z lekcji (INF.03)</a></li>
+          <li><a href="subpages/files.html">Pobierz programy (Instalki)</a></li>
+          <li><a href="subpages/systemy.html">Pobierz systemy operacyjne (ISO)</a></li>
+          <li><a href="inf03/list.html">Notatki z lekcji (INF.03)</a></li>
         </ul>
       </div>
     </div>
 
     <div class="main-content">
-      
+
       <div class="welcome">
         <h1>Witaj w bazie wiedzy i narzędzi!</h1>
         <p>Znajdziesz tutaj gotowe notatki szkolne, przydatne instalatory programów, instrukcje sieciowe oraz systemy operacyjne przydatne do nauki do egzaminów zawodowych <strong>INF.02</strong> oraz <strong>INF.03</strong>.</p>
       </div>
 
       <div class="inf03-box">
-        <h2>🛠️ Konfiguracja Systemów i Sprzętu (INF.02)</h2>
+        <h2>Konfiguracja Systemów i Sprzętu (INF.02)</h2>
         <ul class="topic-list">
-          <li><a href="subpages/windows_tools.html">🪟 Windows - Narzędzia, skrypty i optymalizacja systemu</a></li>
-          <li><a href="subpages/linux_tools.html">🐧 Linux - Przydatne narzędzia w terminalu (MC, VIM, Lynx)</a></li>
-          <li><a href="subpages/netplan.html">🌐 Linux - Konfiguracja kart sieciowych w Netplan</a></li>
-          <li><a href="subpages/grub.html">💿 Linux - Przywracanie i włączanie menu startowego GRUB</a></li>
+          <li><a href="subpages/windows_tools.html">Windows - Narzędzia, skrypty i optymalizacja systemu</a></li>
+          <li><a href="subpages/linux_tools.html">Linux - Przydatne narzędzia w terminalu (MC, VIM, Lynx)</a></li>
+          <li><a href="subpages/netplan.html">Linux - Konfiguracja kart sieciowych w Netplan</a></li>
+          <li><a href="subpages/grub.html">Linux - Przywracanie i włączanie menu startowego GRUB</a></li>
         </ul>
       </div>
 
       <div class="inf03-box">
-        <h2>💻 Programowanie, Strony WWW i Bazy Danych (INF.03)</h2>
+        <h2>Programowanie, Strony WWW i Bazy Danych (INF.03)</h2>
         <ul class="topic-list">
-          <li><a href="inf03/xampp.html">💾 Instalacja, obsługa XAMPP na pendrive i konsola MySQL</a></li>
-          <li><a href="inf03/list.html">📘 Szkolne notatki z lekcji (Format .odt dla LibreOffice)</a></li>
+          <li><a href="inf03/xampp.html">Instalacja, obsługa XAMPP na pendrive i konsola MySQL</a></li>
+          <li><a href="inf03/list.html">Szkolne notatki z lekcji (Format .odt dla LibreOffice)</a></li>
         </ul>
       </div>
 
       <div class="proposal-box">
-        <h2>💡 Brakuje jakiegoś tematu?</h2>
+        <h2>Brakuje jakiegoś tematu?</h2>
         <p class="hint">Wpisz swoją propozycję, a postaram się dodać odpowiedni poradnik.</p>
         <form id="proposalForm">
-          <input type="text" id="newTopic" placeholder="Np. prawa dostępu chmod, konfiguracja Apache..." required />
-          <button type="submit">Wyślij pomysł</button>
+          <input type="text" id="newTopic" placeholder="Np. prawa dostepu chmod, konfiguracja Apache..." required />
+          <button type="submit">Wyslij pomysl</button>
         </form>
-        <p id="confirmationMessage" style="display:none; color: #4caf50; margin-top: 10px; font-weight: bold;">
-          ✔️ Dziękujemy za propozycję! Temat został zapisany.
+        <p id="confirmationMessage" style="display:none;">
+          Dziekujemy za propozycje! Temat zostal zapisany.
         </p>
       </div>
     </div>

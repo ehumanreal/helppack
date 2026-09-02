@@ -3,49 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💻Base0203💻</title>
+  <title>Base0203 – GRUB</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
-  <h2><a href="../index.html">← Powrót do listy tematów</a></h2>
-  <h1>Przywracanie / Włączanie menu GRUB (Ubuntu i inne)</h1>
+  <div class="container">
+    <div class="main-content">
+      <a href="../index.html" class="back-link">&larr; Powrot do listy tematow</a>
+      <h1>Przywracanie / Wlaczenie menu GRUB (Ubuntu i inne)</h1>
 
-  <div style="background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #0d47a1; line-height: 1.5;">
-    <strong>💡 Kiedy to się przydaje?</strong><br>
-    Gdy po włączeniu komputera od razu uruchamia Ci się Ubuntu (lub Windows), nie dając możliwości wyboru systemu. Poniższa instrukcja zmusi komputer, by przy starcie zawsze pokazywał menu wyboru systemów operacyjnych.
-  </div>
+      <div class="info-box">
+        <strong>Kiedy to sie przydaje?</strong><br>
+        Gdy po wlaczeniu komputera od razu uruchamia Ci sie Ubuntu (lub Windows), nie dajac mozliwosci wyboru systemu. Ponizsza instrukcja zmusi komputer, by przy starcie zawsze pokazywal menu wyboru systemow operacyjnych.
+      </div>
 
-  <h2>Krok 1: Otwarcie pliku konfiguracyjnego</h2>
-  <p>Otwórz terminal w systemie Linux i wpisz poniższą komendę, aby edytować ustawienia GRUB jako administrator:</p>
-  <p><code class="inline-code">sudo nano /etc/default/grub</code></p>
+      <h2>Krok 1: Otwarcie pliku konfiguracyjnego</h2>
+      <p>Otworz terminal w systemie Linux i wpisz ponizsza komende, aby edytowac ustawienia GRUB jako administrator:</p>
+      <p><code class="inline-code">sudo nano /etc/default/grub</code></p>
 
-  <hr>
+      <hr>
 
-  <h2>Krok 2: Edycja ustawień</h2>
-  <p>Odszukaj w pliku poniższe linijki i zmień ich wartości. Jeśli którejś z nich w ogóle nie ma w pliku – dopisz ją na samym dole:</p>
+      <h2>Krok 2: Edycja ustawien</h2>
+      <p>Odszukaj w pliku ponizsze linijki i zmien ich wartosci. Jesli ktorejs z nich w ogole nie ma w pliku - dopisz ja na samym dole:</p>
 
-<div class="code-box">GRUB_TIMEOUT=10           # Czas (w sekundach), przez jaki menu będzie czekać na Twój wybór
-GRUB_TIMEOUT_STYLE=menu   # Wymusza wyświetlanie tradycyjnego menu wyboru systemu
-GRUB_HIDDEN_TIMEOUT=0     # Wyłącza ukrywanie menu na start komputera
+      <div class="code-box">GRUB_TIMEOUT=10           # Czas (w sekundach), przez jaki menu bedzie czekac na Twoj wybor
+GRUB_TIMEOUT_STYLE=menu   # Wymusza wyswietlanie tradycyjnego menu wyboru systemu
+GRUB_HIDDEN_TIMEOUT=0     # Wylacza ukrywanie menu na start komputera
 </div>
 
-  <p style="margin-top: 15px;">
-    <strong>✍️ Jak zapisać zmiany w edytorze nano?</strong><br>
-    Gdy skończysz edycję, wciśnij kombinację klawiszy <strong>Ctrl + O</strong>, a następnie wciśnij <strong>Enter</strong> (aby zapisać plik). <br>
-    Następnie wciśnij <strong>Ctrl + X</strong>, aby bezpiecznie wyjść z edytora z powrotem do terminala.
-  </p>
+      <p>
+        <strong>Jak zapisac zmiany w edytorze nano?</strong><br>
+        Gdy skonczysz edycje, wcisnij kombinacje klawiszy <strong>Ctrl + O</strong>, a nastepnie wcisnij <strong>Enter</strong> (aby zapisac plik).<br>
+        Nastepnie wcisnij <strong>Ctrl + X</strong>, aby bezpiecznie wyjsc z edytora z powrotem do terminala.
+      </p>
 
-  <hr>
+      <hr>
 
-  <h2>Krok 3: Zatwierdzenie zmian w systemie</h2>
-  <p>Samo zapisanie pliku nie wystarczy. Musisz poinformować system operacyjny o zmianach. Wpisz w terminalu kluczową komendę:</p>
-  <p><code class="inline-code">sudo update-grub</code></p>
-  <p>System przetworzy plik i zaktualizuje pliki startowe komputera.</p>
+      <h2>Krok 3: Zatwierdzenie zmian w systemie</h2>
+      <p>Samo zapisanie pliku nie wystarczy. Musisz poinformowac system operacyjny o zmianach. Wpisz w terminalu kluczowa komende:</p>
+      <p><code class="inline-code">sudo update-grub</code></p>
+      <p>System przetworzy plik i zaktualizuje pliki startowe komputera.</p>
 
-  <hr>
+      <hr>
 
-  <h2>Krok 4: Restart</h2>
-  <p>Teraz uruchom komputer ponownie wpisując <code class="inline-code">sudo reboot</code> lub klikając restart w systemie. Podczas uruchamiania powinno pojawić się upragnione menu wyboru systemów.</p>
+      <h2>Krok 4: Restart</h2>
+      <p>Teraz uruchom komputer ponownie wpisujac <code class="inline-code">sudo reboot</code> lub klikajac restart w systemie. Podczas uruchamiania powinno pojawic sie upragnione menu wyboru systemow.</p>
+    </div>
+  </div>
 
   <script src="../script.js"></script>
 </body>

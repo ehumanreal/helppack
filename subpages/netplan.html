@@ -3,79 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💻Base0203💻</title>
+  <title>Base0203 – Netplan</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
-<!-- konfiguracja netplana dla linuxa -->
-<h2><a href="../index.html">← Powrót do listy tematów</a></h2>
-<h1>Konfiguracja sieci (Netplan)</h1>
+<body>
+  <div class="container">
+    <div class="main-content">
+      <a href="../index.html" class="back-link">&larr; Powrot do listy tematow</a>
+      <h1>Konfiguracja sieci (Netplan)</h1>
 
-<div style="background-color: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #0d47a1;">
-  <strong>💡 Środowisko testowe:</strong> Poniższe konfiguracje były testowane i działają na <strong>Ubuntu Server 24.04.1 LTS</strong>.
-</div>
+      <div class="info-box">
+        <strong>Srodowisko testowe:</strong> Ponizsze konfiguracje byly testowane i dzialaja na <strong>Ubuntu Server 24.04.1 LTS</strong>.
+      </div>
 
-<div style="background-color: #ffebee; border-left: 5px solid #f44336; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #b71c1c;">
-  <strong>⚠️ BARDZO WAŻNA ZASADA (Format YAML):</strong> <br>
-  Pliki Netplana <strong>NIE NAWIDZĄ klawisza TAB!</strong> Do robienia wcięć w tekście używaj <strong>WYŁĄCZNIE spacji</strong>. Jeśli wkleisz tam tabulator, system wyrzuci błąd i sieć nie zadziała.
-</div>
+      <div class="danger-box">
+        <strong>BARDZO WAZNA ZASADA (Format YAML):</strong><br>
+        Pliki Netplana <strong>NIE NAWIDZA klawisza TAB!</strong> Do robienia wciec w tekscie uzywaj <strong>WYLACZNIE spacji</strong>. Jesli wkleisz tam tabulator, system wyrzuci blad i siec nie zadziala.
+      </div>
 
-<div style="background-color: #fffde7; border-left: 5px solid #fbc02d; padding: 15px; margin-bottom: 20px; border-radius: 4px; color: #f57f17;">
-  <strong>ℹ️ Uwaga na nazwy kart sieciowych:</strong> <br>
-  Nazwy kart (np. <code>enp2s5</code>, <code>enp1s0</code>, <code>enp0s25</code>) w Twoim komputerze mogą być zupełnie inne! Zanim bezmyślnie skopiujesz kod, sprawdź jak nazywają się Twoje karty wpisując w terminalu komendę: <code class="inline-code" style="color: #ffffff;">ip a</code>.
-</div>
+      <div class="warning-box">
+        <strong>Uwaga na nazwy kart sieciowych:</strong><br>
+        Nazwy kart (np. <code class="inline-code">enp2s5</code>, <code class="inline-code">enp1s0</code>, <code class="inline-code">enp0s25</code>) w Twoim komputerze moga byc zupelnie inne! Zanim bezmyslnie skopiujesz kod, sprawdz jak nazywaja sie Twoje karty wpisujac w terminalu komende: <code class="inline-code">ip a</code>.
+      </div>
 
-<p>W zależności od tego, jak zainstalowałeś system, Twój plik konfiguracyjny może znajdować się w jednej z dwóch lokalizacji poniżej. Edytujesz go komendą: <code class="inline-code">sudo nano /ścieżka/do/pliku.yaml</code></p>
+      <p>W zaleznosci od tego, jak zainstalowales system, Twoj plik konfiguracyjny moze znajdowac sie w jednej z dwoch lokalizacji ponizej. Edytujesz go komenda: <code class="inline-code">sudo nano /sciezka/do/pliku.yaml</code></p>
 
-<hr>
+      <hr>
 
-<h2>Wariant 1: Plik cloud-init</h2>
-<p><strong>Ścieżka do pliku:</strong> <code class="inline-code">/etc/netplan/50-cloud-init.yaml</code></p>
-<p>Ten wzorzec konfiguruje dwie karty: jedną wyłącza (brak automatycznego IP), a drugiej przypisuje stały, ręczny adres IP.</p>
+      <h2>Wariant 1: Plik cloud-init</h2>
+      <p><strong>Sciezka do pliku:</strong> <code class="inline-code">/etc/netplan/50-cloud-init.yaml</code></p>
+      <p>Ten wzorzec konfiguruje dwie karty: jedna wylacza (brak automatycznego IP), a drugiej przypisuje staly, reczny adres IP.</p>
 
-<pre class="code-box"><code>network:
+      <pre class="code-box"><code>network:
   ethernets:
     enp2s5:                  # Nazwa Twojej pierwszej karty
-      dhcp4: false           # false = WYŁĄCZONE automatyczne pobieranie IP (czysta karta)
+      dhcp4: false           # false = WYLACZONE automatyczne pobieranie IP (czysta karta)
     enp1s0:                  # Nazwa Twojej drugiej karty
       addresses:
-        - 172.20.0.3/24      # Stały adres IP serwera (końcówka /24 to tzw. maska sieci)
+        - 172.20.0.3/24      # Staly adres IP serwera (koncowka /24 to tzw. maska sieci)
       nameservers:
         addresses:
-          - 172.20.0.1       # Adres DNS (serwer, który tłumaczy nazwy stron na IP, np. router)
+          - 172.20.0.1       # Adres DNS (serwer, ktory tlumaczy nazwy stron na IP, np. router)
       routes:
-        - to: 0.0.0.0/0      # Reguła: "cały ruch w świat..."
-          via: 172.20.0.1    # "...wysyłaj przez tę bramę (router)"
+        - to: 0.0.0.0/0      # Regula: "caly ruch w swiat..."
+          via: 172.20.0.1    # "...wysylaj przez te brame (router)"
   version: 2</code></pre>
 
-<hr>
+      <hr>
 
-<h2>Wariant 2: Plik instalatora</h2>
-<p><strong>Ścieżka do pliku:</strong> <code class="inline-code">/etc/netplan/00-installer-config.yaml</code></p>
-<p>Ten wzorzec konfiguruje aż trzy karty sieciowe: dwie na sztywno (stałe IP), a trzecia ma automatycznie pobierać adres z routera (DHCP).</p>
+      <h2>Wariant 2: Plik instalatora</h2>
+      <p><strong>Sciezka do pliku:</strong> <code class="inline-code">/etc/netplan/00-installer-config.yaml</code></p>
+      <p>Ten wzorzec konfiguruje az trzy karty sieciowe: dwie na sztywno (stale IP), a trzecia ma automatycznie pobierac adres z routera (DHCP).</p>
 
-<pre class="code-box"><code>network:
+      <pre class="code-box"><code>network:
   ethernets:
     enp0s25:                 # Pierwsza karta
-      dhcp4: false           # Wyłączone automatyczne IP
+      dhcp4: false           # Wylaczone automatyczne IP
     enp1s0:                  # Druga karta
       addresses:
-        - 10.10.10.2/24      # Stały, ręczny adres IP serwera
+        - 10.10.10.2/24      # Staly, reczny adres IP serwera
       nameservers:
         addresses:
           - 10.10.10.1       # Adres serwera DNS
         search: []           # Pusta lista wyszukiwania domen (standard)
     enp2s5:                  # Trzecia karta
-      dhcp4: true            # true = WŁĄCZONE automatyczne pobieranie IP z routera (DHCP)
+      dhcp4: true            # true = WLACZONE automatyczne pobieranie IP z routera (DHCP)
   version: 2</code></pre>
 
-<hr>
+      <hr>
 
-<h2>Jak zatwierdzić zmiany? (Żeby sieć zaczęła działać)</h2>
-<p>Samo zapisanie pliku tekstowego nic nie zmieni. Musisz zmusić system, żeby wczytał nową konfigurację. Wpisz w terminalu:</p>
-<p><code class="inline-code">sudo netplan apply</code></p>
-<p>Jeśli nie pojawił się żaden komunikat – gratulacje, sieć działa! Jeśli wyskoczył błąd, sprawdź, czy nie użyłeś tabulatora albo czy nie brakuje gdzieś spacji.</p>
+      <h2>Jak zatwierdzic zmiany? (Zeby siec zaczela dzialac)</h2>
+      <p>Samo zapisanie pliku tekstowego nic nie zmieni. Musisz zmusic system, zeby wczytal nowa konfiguracje. Wpisz w terminalu:</p>
+      <p><code class="inline-code">sudo netplan apply</code></p>
+      <p>Jesli nie pojawil sie zadny komunikat - gratulacje, siec dziala! Jesli wyskoczyl blad, sprawdz, czy nie uzyles tabulatora albo czy nie brakuje gdzies spacji.</p>
+    </div>
+  </div>
 
-<script src="../script.js"></script>
+  <script src="../script.js"></script>
 </body>
-
 </html>
